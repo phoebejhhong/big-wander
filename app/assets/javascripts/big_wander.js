@@ -5,7 +5,9 @@ window.BigWander = {
   Routers: {},
   Utils: {},
   initialize: function() {
-    new BigWander.Routers.Router
+    new BigWander.Routers.Router({
+      $rootEl: $(".main")
+    });
     Backbone.history.start();
   }
 };
