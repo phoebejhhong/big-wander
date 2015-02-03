@@ -1,25 +1,25 @@
-# MyBigWander
+# BigWander
 
-[http://mybigwander.herokuapp.com][heroku]
+[http://bigwander.herokuapp.com][heroku]
 
 ## Minimum Viable Product
-[MapCrunch][mapcrunch] lets users explore the world by presenting random Google street views (panoramas). [MyBigWander][heroku] is a MapCrunch clone with personal features added. Users can save their favorite panoramas to their galleries.
+[MapCrunch][mapcrunch] lets users explore the world by presenting random Google street views (panoramas). [BigWander][heroku] is a MapCrunch clone with personal features added. Users can save their favorite panoramas to their galleries.
 
 [mapcrunch]: http://www.mapcrunch.com/
-[heroku]: http://mybigwander.herokuapp.com
+[heroku]: http://bigwander.herokuapp.com
 
 All users can:
-- [] View random/selected street views (panoramas)
-- [] Create accounts
-- [] View Others' Galleries
-- [] Search for galleries by title
-- [] Search for panoramas by tag
+- [ ] View random/selected street views (panoramas)
+- [ ] Create accounts
+- [ ] View Others' Galleries
+- [ ] Search for galleries by title
+- [ ] Search for panoramas by tag
 
 Signed-in users can:
-- [] Create sessions (log in)
-- [] Create Galleries
-- [] Save panoramas to gallery
-- [] Tag panoramas
+- [ ] Create sessions (log in)
+- [ ] Create Galleries
+- [ ] Save panoramas to gallery
+- [ ] Tag panoramas
 
 
 ## Design Docs
@@ -52,12 +52,12 @@ I'll need a `search` route that accepts a query in the params. The controller ac
 [Details][phase-four]
 
 ### Bonus Features (TBD)
-- [] Vote button and counter for `PanoItemShow` view
-- [] TagShow view
-- [] Pagination of the `UserShow`, `GalleryShow`, and `SearchShow` views
-- [] Subscribe to lists
-- [] Save each street view as image file
-- [] Filter random street views
+- [ ] Vote button and counter for `PanoItemShow` view
+- [ ] TagShow view
+- [ ] Pagination of the `UserShow`, `GalleryShow`, and `SearchShow` views
+- [ ] Subscribe to lists
+- [ ] Save each street view as image file
+- [ ] Filter random street views
 
 
 [phase-one]: ./docs/phases/phase1.md
