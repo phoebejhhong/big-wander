@@ -1,0 +1,8 @@
+<div class="container">
+  <h3><%= user.escape("username") %> 's Galleries</h3>
+  <div class="galleries-index">
+    <% if (user.galleries().length === 0) { %>
+      No Galleries
+    <% }; %>
+  </div>
+</div>

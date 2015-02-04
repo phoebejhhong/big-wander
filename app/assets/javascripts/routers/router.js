@@ -3,6 +3,7 @@ BigWander.Routers.Router = Backbone.Router.extend({
     "": "root",
     "p/:lat/:lgn/:heading/:pitch": "streetViewPanoramaShow",
     "p/:lat/:lgn": "streetViewPanoramaShow",
+    "users/:id": "userShow",
   },
 
   initialize: function (options) {
@@ -34,6 +35,17 @@ BigWander.Routers.Router = Backbone.Router.extend({
 
     this._swapView(view);
     google.maps.event.trigger(view.panorama, 'resize')
+  },
+
+  userShow: function (id) {
+    var user = new BigWander.Models.User({
+      id: id
+    });
+    user.fetch();
+    var view = new BigWander.Views.UserShow({
+      model: user
+    })
+    this._swapView(view);
   },
 
   _swapView: function (view) {
