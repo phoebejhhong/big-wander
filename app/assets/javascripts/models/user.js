@@ -13,7 +13,7 @@ BigWander.Models.User = Backbone.Model.extend({
 
   parse: function (payload) {
     if (payload.galleries) {
-      this.galleries().set(payload.galleries);
+      this.galleries().set(payload.galleries, { parse: true });
       delete payload.galleries;
     }
 

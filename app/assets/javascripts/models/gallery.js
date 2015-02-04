@@ -1,20 +1,22 @@
 BigWander.Models.Gallery = Backbone.Model.extend({
   urlRoot: 'api/galleries',
 
-  // galleries: function () {
-  //   if (!this._galleries) {
-  //     this._galleries = {};
-  //   }
-  //
-  //   return this._galleries;
-  // },
-  //
-  // parse: function (payload) {
-  //   if (payload.galleries) {
-  //     this.galleries().set(payload.galleries);
-  //     delete payload.galleries();
-  //   }
-  //
-  //   return payload;
-  // }
+  panoItems: function () {
+    if (!this._panoItems) {
+      this._panoItems = new BigWander.Collections.PanoItems([], {
+        gallery: this
+      });;
+    }
+
+    return this._panoItems;
+  },
+
+  parse: function (payload) {
+    if (payload.pano_items) {
+      this.panoItems().set(payload.pano_items);
+      delete payload.pano_items;
+    }
+
+    return payload;
+  }
 })

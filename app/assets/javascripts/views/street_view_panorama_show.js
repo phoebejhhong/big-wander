@@ -55,6 +55,8 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
   },
 
   saveView: function () {
-    console.log(this.panorama.getPov());
+    var panoItem = new BigWander.Models.PanoItem({
+      
+    })
   },
 })

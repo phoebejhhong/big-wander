@@ -3,7 +3,7 @@ BigWander.Views.GalleryIndexItem = Backbone.CompositeView.extend({
   className: "gallery-index-item",
 
   initialize: function (options) {
-    this.listenTo(this.model, 'sync', this.render());
+    this.collection = this.model.panoItems();
   },
 
   render: function () {
@@ -11,8 +11,20 @@ BigWander.Views.GalleryIndexItem = Backbone.CompositeView.extend({
       gallery: this.model
     });
     this.$el.html(content);
+    this.renderPanoItems();
 
     return this;
-  }
+  },
+
+  addPanoItem: function (panoItem) {
+    var view = new BigWander.Views.PanoIndexItem({
+      model: panoItem
+    })
+    this.addSubview(".pano-items-index", view);
+  },
+
+  renderPanoItems: function () {
+    this.collection.each(this.addPanoItem.bind(this));
+  },
 
 })

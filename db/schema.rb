@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204194232) do
+ActiveRecord::Schema.define(version: 20150204220451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 20150204194232) do
   end
 
   add_index "galleries", ["owner_id"], name: "index_galleries_on_owner_id", using: :btree
+
+  create_table "pano_items", force: true do |t|
+    t.integer  "gallery_id",                         null: false
+    t.string   "title",                              null: false
+    t.decimal  "lat",        precision: 9, scale: 6, null: false
+    t.decimal  "lng",        precision: 9, scale: 6, null: false
+    t.decimal  "heading",    precision: 6, scale: 3, null: false
+    t.decimal  "pitch",      precision: 6, scale: 3, null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "pano_items", ["gallery_id"], name: "index_pano_items_on_gallery_id", using: :btree
 
   create_table "panoramas", force: true do |t|
     t.decimal  "lat",        precision: 9, scale: 6, null: false
