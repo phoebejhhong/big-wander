@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'backbone-on-rails'
 
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'sass-rails', '>= 3.2'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0.rc3'
 # Use postgresql as the database for Active Record

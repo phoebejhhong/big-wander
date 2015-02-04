@@ -38,7 +38,8 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
         position: google.maps.ControlPosition.RIGHT_CENTER,
       },
     };
-    this.panorama = new google.maps.StreetViewPanorama(this.$("#big-panorama")[0], panoramaOptions);
+    window.panorama = this.panorama = new google.maps.StreetViewPanorama(this.$("#big-panorama")[0], panoramaOptions);
+
   },
 
   renderAddress: function () {

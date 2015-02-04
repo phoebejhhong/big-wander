@@ -1,7 +1,6 @@
 BigWander.Routers.Router = Backbone.Router.extend({
   routes: {
     "": "root",
-    "random": "randomPanorama",
     "p/:lat/:lgn/:heading/:pitch": "streetViewPanoramaShow",
     "p/:lat/:lgn": "streetViewPanoramaShow",
   },
@@ -11,11 +10,18 @@ BigWander.Routers.Router = Backbone.Router.extend({
   },
 
   root: function () {
-    BigWander.goToRandomPanorama(BigWander.createRandomLat(), BigWander.createRandomLng());
+    BigWander.panoramas.fetch({
+      success: this.randomPanorama
+    });
   },
 
   randomPanorama: function () {
-
+    // BigWander.goToRandomPanorama(BigWander.createRandomLat(), BigWander.createRandomLng());
+    var random_idx = Math.floor(Math.random() * BigWander.panoramas.length);
+    var panorama = BigWander.panoramas.models[random_idx];
+    var url = "p/" + panorama.get("lat") +"/" + panorama.get("lng") +
+      "/" + panorama.get("heading") +"/" + panorama.get("pitch")
+    Backbone.history.navigate(url, {trigger: true});
   },
 
   streetViewPanoramaShow: function (lat, lgn, heading, pitch) {
@@ -27,6 +33,7 @@ BigWander.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(view);
+    google.maps.event.trigger(view.panorama, 'resize')
   },
 
   _swapView: function (view) {
