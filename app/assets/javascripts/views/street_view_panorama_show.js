@@ -2,24 +2,29 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
   template: JST["street-view-panorama-show"],
   className: "street-view-panorama-show",
 
+  events: {
+    "click .save-view": "saveView",
+  },
+
   initialize: function (options) {
     this.lat = Number(options.lat);
     this.lng = Number(options.lng);
     this.heading = Number(options.heading);
     this.pitch = Number(options.pitch);
+    this.loc = new google.maps.LatLng(this.lat,this.lng);
   },
 
   render: function () {
     var content = this.template();
     this.$el.html(content);
     this.renderMap();
+    this.renderAddress();
     return this;
   },
 
   renderMap: function () {
-    var loc = new google.maps.LatLng(this.lat,this.lng);
     var panoramaOptions = {
-      position: loc,
+      position: this.loc,
       pov: {
         heading: this.heading,
         pitch: this.pitch,
@@ -33,6 +38,22 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
         position: google.maps.ControlPosition.RIGHT_CENTER,
       },
     };
-    BigWander.panorama =new google.maps.StreetViewPanorama(this.$("#big-panorama")[0], panoramaOptions);
+    this.panorama = new google.maps.StreetViewPanorama(this.$("#big-panorama")[0], panoramaOptions);
+  },
+
+  renderAddress: function () {
+    var that = this;
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({'latLng': this.loc}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[1]) {
+          that.$(".address").append(results[1].formatted_address);
+        }
+      }
+    });
+  },
+
+  saveView: function () {
+    console.log(this.panorama.getPov());
   },
 })
