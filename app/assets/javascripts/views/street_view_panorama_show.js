@@ -72,8 +72,10 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
   renderSavePanoForm: function () {
     // TODO: rendering should only happen once
     if (BigWander.currentUser) {
-      var view = new BigWander.Views.SavePanoForm({
-        values: this.getCurrentValues()
+      var view = new BigWander.Views.PanoForm({
+        values: this.getCurrentValues(),
+        model: new BigWander.Models.PanoItem,
+        gallery: null,
       });
 
       this.addSubview(".save-pano-form-wrapper", view);

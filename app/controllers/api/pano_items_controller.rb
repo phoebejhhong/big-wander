@@ -9,6 +9,15 @@ class Api::PanoItemsController < ApplicationController
     end
   end
 
+  def update
+    pano_item = PanoItem.find(params[:id])
+    if pano_item.update_attributes(pano_item_params)
+      render json: pano_item
+    else
+      render json: pano_item.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     pano_item = PanoItem.find(params[:id])
     pano_item.destroy

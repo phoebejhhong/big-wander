@@ -14,6 +14,15 @@ class Api::GalleriesController < ApplicationController
     end
   end
 
+  def update
+    gallery = Gallery.find(params[:id])
+    if gallery.update_attributes(gallery_params)
+      render json: gallery
+    else
+      render json: gallery.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     gallery = Gallery.find(params[:id])
     gallery.destroy

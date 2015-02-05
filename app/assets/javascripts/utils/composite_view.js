@@ -60,5 +60,5 @@ Backbone.CompositeView = Backbone.View.extend({
 
     return subview;
   },
-  
+
 });

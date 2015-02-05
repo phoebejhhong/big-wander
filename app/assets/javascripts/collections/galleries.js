@@ -2,7 +2,7 @@ BigWander.Collections.Galleries = Backbone.Collection.extend({
   url: 'api/galleries',
   model: BigWander.Models.Gallery,
 
-  initialize: function (options) {
+  initialize: function (models, options) {
     this.user = options.user;
   },
 

@@ -1,7 +1,13 @@
-<input type="text" name="gallery[title]"
-  placeholder="Gallery title" class="title-input" />
-  <textarea name="gallery[description]"
-  placeholder="Add desription if you'd like"/>
-  </textarea>
-<input type="submit" value = "Create!" />
+<% var titlePlaceholder = (gallery.isNew() ? "Gallery title" : ""); %>
+<% var titleValue = (gallery.isNew() ? "" : gallery.escape("title")); %>
+<% var descPlaceholder = (gallery.isNew() || !gallery.escape("description") ? "Add description if you'd like" : ""); %>
+<% var descValue = (gallery.isNew() ? "" : gallery.escape("description")); %>
+<% var buttonValue = (gallery.isNew() ? "Create" : "Save"); %>
+
+<input type="text" name="title"
+  placeholder="<%= titlePlaceholder %>" class="title-input"
+  value="<%= titleValue %>" autofocus="true" />
+  <textarea name="description"
+  placeholder="<%= descPlaceholder %>"><%= descValue %></textarea>
+<input type="submit" value = "<%= buttonValue %>" />
 <a href="javascript:void(0)" class="close-gallery-form">close</a>

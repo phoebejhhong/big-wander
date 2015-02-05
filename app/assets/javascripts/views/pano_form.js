@@ -1,9 +1,10 @@
-BigWander.Views.SavePanoForm = Backbone.CompositeView.extend({
-  template: JST["save-pano-form"],
-  className: "save-pano-form",
+BigWander.Views.PanoForm = Backbone.CompositeView.extend({
+  template: JST["pano-form"],
+  className: "pano-form",
   tagName: "form",
 
   initialize: function (options) {
+    this.collection = this.model.collection;
     this.values = options.values;
   },
 
@@ -13,7 +14,9 @@ BigWander.Views.SavePanoForm = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var content = this.template();
+    var content = this.template({
+      panoItem: this.model,
+    });
     this.$el.html(content);
 
     return this;
@@ -24,9 +27,10 @@ BigWander.Views.SavePanoForm = Backbone.CompositeView.extend({
     event.preventDefault();
 
     var params = $(event.currentTarget).serializeJSON();
-    var panoItem = new BigWander.Models.PanoItem(params["pano_item"]);
-    panoItem.save(this.values, {
+    this.values ? $.extend(params, this.values) : false;
+    this.model.save(params, {
       success: function () {
+        // TODO: remove from collection if reassigned to another gallery
         that.remove();
       },
       error: function () {

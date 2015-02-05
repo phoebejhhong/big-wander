@@ -12,7 +12,9 @@ BigWander.Views.GalleryForm = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var content = this.template();
+    var content = this.template({
+      gallery: this.model
+    });
     this.$el.html(content);
 
     return this;
@@ -22,10 +24,10 @@ BigWander.Views.GalleryForm = Backbone.CompositeView.extend({
     var that = this;
     event.preventDefault();
     var params = $(event.currentTarget).serializeJSON();
-    params.gallery.owner_id = BigWander.currentUserId;
-    this.model.save(params["gallery"], {
+    params.owner_id = BigWander.currentUserId;
+    this.model.save(params, {
       success: function () {
-        that.collection.add(that.model);
+        that.collection.add(that.model, {merge: true});
         that.remove();
       },
       error: function () {

@@ -10,6 +10,7 @@ BigWander.Views.UserShow = Backbone.CompositeView.extend({
     this.collection = this.model.galleries();
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.collection, 'add', this.addGallery);
+    this.listenTo(this.collection, 'change', this.render);
     this.listenTo(this.collection, 'remove', this.removeGallery);
   },
 

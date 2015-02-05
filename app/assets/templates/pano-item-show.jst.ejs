@@ -1,4 +1,8 @@
 <div class="medium-panorama">
 </div>
 <%= panoItem.escape("title") %>
-<a href="javascript:void(0)" class="delete-pano-item">Delete</a>
+<% if (BigWander.currentUser && BigWander.currentUserId === gallery.get("owner_id")) { %>
+  <a href="javascript:void(0)" class="edit-pano-item">Edit</a> |
+  <a href="javascript:void(0)" class="delete-pano-item">Delete</a>
+  <div class="edit-pano-item-form-wrapper"></div>
+<% }%>

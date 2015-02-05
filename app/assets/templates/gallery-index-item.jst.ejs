@@ -3,7 +3,9 @@
 </h5>
 <%= gallery.escape("description") %>
 <% if (BigWander.currentUser && BigWander.currentUser.id === this.model.get("owner_id")) { %>
-  <a href="javascript:void(0)" class="delete-gallery">Delete this gallery</a>
+  <a href="javascript:void(0)" class="edit-gallery">Edit</a> |
+  <a href="javascript:void(0)" class="delete-gallery">Delete</a>
+  <div class="edit-gallery-form-wrapper"></div>
 <% }; %>
 <ul class="pano-items-index">
 </ul>

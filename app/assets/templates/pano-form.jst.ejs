@@ -1,0 +1,19 @@
+<% var currentGalleryId = (panoItem.isNew() ? null : panoItem.collection.gallery.id); %>
+<% var titlePlaceholder = (panoItem.isNew() ? "Name your street view" : ""); %>
+<% var titleValue = (panoItem.isNew() ? "" : panoItem.escape("title")); %>
+
+Choose Gallery:
+<select name="gallery_id">
+  <% BigWander.currentUser.galleries().each(function (gallery) { %>
+    <option value="<%= gallery.id %>"
+      <% if (gallery.id === currentGalleryId) { %>
+        selected
+      <% }%> >
+      <%= gallery.escape("title") %>
+      </option>
+  <% }); %>
+</select>
+<input type="text" name="title" value="<%= titleValue %>"
+  placeholder="<%= titlePlaceholder %>" class="title-input" />
+<input type="submit" value = "Save" />
+<a href="javascript:void(0)" class="close-save-form">close</a>

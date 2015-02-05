@@ -9,7 +9,7 @@ BigWander.Models.Gallery = Backbone.Model.extend({
       this._panoItems = new BigWander.Collections.PanoItems([], {
         gallery: this
       });;
-    }
+    };
 
     return this._panoItems;
   },

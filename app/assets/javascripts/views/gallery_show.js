@@ -25,7 +25,8 @@ BigWander.Views.GalleryShow = Backbone.CompositeView.extend({
     };
 
     var view = new BigWander.Views.PanoItemShow({
-      model: panoItem
+      model: panoItem,
+      gallery: this.model,
     });
 
     this.addSubview(".pano-items-index", view);

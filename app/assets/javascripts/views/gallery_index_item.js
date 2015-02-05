@@ -3,11 +3,12 @@ BigWander.Views.GalleryIndexItem = Backbone.CompositeView.extend({
   className: "gallery-index-item",
 
   events: {
+    "click .edit-gallery": "renderEditGalleryForm",
     "click .delete-gallery": "deleteGallery",
   },
 
   initialize: function (options) {
-    // display only the first two items
+    // display only the first two pano items
     this.collection = this.model.panoItems().slice(0, 2)
   },
 
@@ -30,6 +31,16 @@ BigWander.Views.GalleryIndexItem = Backbone.CompositeView.extend({
 
   renderPanoItems: function () {
     _(this.collection).each(this.addPanoItem.bind(this));
+  },
+
+  renderEditGalleryForm: function () {
+    // TODO: this can be a modal
+    var view = new BigWander.Views.GalleryForm({
+      model: this.model,
+      collection: this.model.collection,
+    });
+
+    this.addSubview(".edit-gallery-form-wrapper", view);
   },
 
   deleteGallery: function () {

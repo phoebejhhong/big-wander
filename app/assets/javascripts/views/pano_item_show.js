@@ -4,10 +4,12 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
 
   events: {
     "click .delete-pano-item": "deletePanoItem",
+    "click .edit-pano-item": "renderEditPanoForm",
   },
 
-  initialize: function () {
+  initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render);
+    this.gallery = options.gallery;
     this.lat = Number(this.model.get("lat"));
     this.lng = Number(this.model.get("lng"));
     this.heading = Number(this.model.get("heading"));
@@ -17,7 +19,8 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
 
   render: function () {
     var content = this.template({
-      panoItem: this.model
+      panoItem: this.model,
+      gallery: this.gallery,
     });
     this.$el.html(content);
     this.renderMap();
@@ -46,6 +49,14 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
     this.panorama = new google.maps.StreetViewPanorama(
       this.$(".medium-panorama")[0], panoramaOptions
     );
+  },
+
+  renderEditPanoForm: function () {
+    // TODO: this can be a modal
+    var view = new BigWander.Views.PanoForm({
+      model: this.model
+    });
+    this.addSubview(".edit-pano-item-form-wrapper", view);
   },
 
   deletePanoItem: function () {
