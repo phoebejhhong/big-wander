@@ -2,6 +2,7 @@ class Api::PanoItemsController < ApplicationController
 
   def create
     pano_item = PanoItem.new(pano_item_params)
+    pano_item.all_tags = params[:all_tags]
     if pano_item.save
       render json: pano_item
     else
@@ -11,6 +12,7 @@ class Api::PanoItemsController < ApplicationController
 
   def update
     pano_item = PanoItem.find(params[:id])
+    pano_item.all_tags = params[:all_tags]
     if pano_item.update_attributes(pano_item_params)
       render json: pano_item
     else

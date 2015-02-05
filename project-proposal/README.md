@@ -19,7 +19,7 @@ Signed-in users can:
 - [x] Create sessions (log in)
 - [x] Create Galleries
 - [x] Save panoramas to gallery
-- [ ] Tag panoramas
+- [x] Tag panoramas
 
 
 ## Design Docs

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204220451) do
+ActiveRecord::Schema.define(version: 20150205220351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,20 @@ ActiveRecord::Schema.define(version: 20150204220451) do
     t.decimal  "pitch",      precision: 6, scale: 3, null: false
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+  end
+
+  create_table "taggings", force: true do |t|
+    t.integer "pano_item_id", null: false
+    t.integer "tag_id",       null: false
+  end
+
+  add_index "taggings", ["pano_item_id"], name: "index_taggings_on_pano_item_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "label",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: true do |t|

@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :users, only: [:show]
     resources :galleries, only: [:create, :destroy, :show, :update]
     resources :pano_items, only: [:create, :destroy, :update]
+    resources :tags, only: [:create, :destroy]
   end
 end

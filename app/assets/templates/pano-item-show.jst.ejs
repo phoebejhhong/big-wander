@@ -1,6 +1,9 @@
 <div class="medium-panorama">
 </div>
-<%= panoItem.escape("title") %>
+Title: <%= panoItem.escape("title") %><br />
+<% if (panoItem.escape("all_tags")) {%>
+Tags: <%= panoItem.escape("all_tags") %>
+<% }; %>
 <% if (BigWander.currentUser && BigWander.currentUserId === gallery.get("owner_id")) { %>
   <a href="javascript:void(0)" class="edit-pano-item">Edit</a> |
   <a href="javascript:void(0)" class="delete-pano-item">Delete</a>

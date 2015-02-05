@@ -1,6 +1,8 @@
 <% var currentGalleryId = (panoItem.isNew() ? null : panoItem.collection.gallery.id); %>
 <% var titlePlaceholder = (panoItem.isNew() ? "Name your street view" : ""); %>
 <% var titleValue = (panoItem.isNew() ? "" : panoItem.escape("title")); %>
+<% var allTagsPlaceholder = (panoItem.isNew() ? "Tag1, Tag2, Longer Tag, ..." : ""); %>
+<% var allTagsValue = (panoItem.isNew() ? "" : panoItem.escape("all_tags")); %>
 
 Choose Gallery:
 <select name="gallery_id">
@@ -13,7 +15,12 @@ Choose Gallery:
       </option>
   <% }); %>
 </select>
+
 <input type="text" name="title" value="<%= titleValue %>"
   placeholder="<%= titlePlaceholder %>" class="title-input" />
+
+<input type="text" name="all_tags" value="<%= allTagsValue %>"
+  placeholder="<%= allTagsPlaceholder %>" />
+
 <input type="submit" value = "Save" />
 <a href="javascript:void(0)" class="close-save-form">close</a>
