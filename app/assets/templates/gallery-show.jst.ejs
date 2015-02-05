@@ -1,0 +1,9 @@
+<div class="container">
+  <h3><%= gallery.escape("title") %></h3>
+  <h5><%= gallery.escape("description") %></h5>
+  <div class="pano-items-index">
+    <% if (gallery.panoItems().length === 0) { %>
+      No Items
+    <% }; %>
+  </div>
+</div>

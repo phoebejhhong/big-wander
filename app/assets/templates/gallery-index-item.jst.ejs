@@ -1,3 +1,7 @@
-<h5><%= gallery.escape("title") %></h5>
+<h5>
+  <a href="<%= '#galleries/' + gallery.id %>"><%= gallery.escape("title") %></a>
+</h5>
+<%= gallery.escape("description") %>
 <ul class="pano-items-index">
 </ul>
+<a href="<%= '#galleries/' + gallery.id %>">View all!</a>

@@ -3,7 +3,9 @@ BigWander.Views.GalleryIndexItem = Backbone.CompositeView.extend({
   className: "gallery-index-item",
 
   initialize: function (options) {
-    this.collection = this.model.panoItems();
+    // display only the first two items
+    this.collection = [this.model.panoItems().first(),
+      this.model.panoItems().models[1]];
   },
 
   render: function () {
@@ -24,7 +26,7 @@ BigWander.Views.GalleryIndexItem = Backbone.CompositeView.extend({
   },
 
   renderPanoItems: function () {
-    this.collection.each(this.addPanoItem.bind(this));
+    _(this.collection).each(this.addPanoItem.bind(this));
   },
 
 })

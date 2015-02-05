@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :panoramas, only: [:show, :index]
     resources :users, only: [:show]
-    resources :galleries, only: [:create, :destroy]
+    resources :galleries, only: [:create, :destroy, :show]
     resources :pano_items, only: [:create, :destroy]
   end
 end
