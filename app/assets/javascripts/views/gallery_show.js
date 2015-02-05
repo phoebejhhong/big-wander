@@ -14,6 +14,7 @@ BigWander.Views.GalleryShow = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.renderPanoItems();
 
+
     return this;
   },
 
@@ -23,6 +24,7 @@ BigWander.Views.GalleryShow = Backbone.CompositeView.extend({
     });
 
     this.addSubview(".pano-items-index", view);
+    google.maps.event.trigger(view.panorama, 'resize')
   },
 
   renderPanoItems: function () {

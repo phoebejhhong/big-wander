@@ -40,7 +40,7 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
       },
     };
     // drawing the street view
-    window.panorama = this.panorama = new google.maps.StreetViewPanorama(
+    this.panorama = new google.maps.StreetViewPanorama(
       this.$("#big-panorama")[0], panoramaOptions
       );
   },
