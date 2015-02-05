@@ -1,6 +1,9 @@
 BigWander.Models.Gallery = Backbone.Model.extend({
   urlRoot: 'api/galleries',
 
+  initialize: function (options) {
+  },
+
   panoItems: function () {
     if (!this._panoItems) {
       this._panoItems = new BigWander.Collections.PanoItems([], {

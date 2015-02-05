@@ -2,10 +2,13 @@ BigWander.Views.GalleryIndexItem = Backbone.CompositeView.extend({
   template: JST["gallery-index-item"],
   className: "gallery-index-item",
 
+  events: {
+    "click .delete-gallery": "deleteGallery",
+  },
+
   initialize: function (options) {
     // display only the first two items
-    this.collection = [this.model.panoItems().first(),
-      this.model.panoItems().models[1]];
+    this.collection = this.model.panoItems().slice(0, 2)
   },
 
   render: function () {
@@ -27,6 +30,11 @@ BigWander.Views.GalleryIndexItem = Backbone.CompositeView.extend({
 
   renderPanoItems: function () {
     _(this.collection).each(this.addPanoItem.bind(this));
+  },
+
+  deleteGallery: function () {
+    this.model.collection.remove(this.model);
+    this.model.destroy();
   },
 
 })

@@ -46,7 +46,7 @@ BigWander.Routers.Router = Backbone.Router.extend({
     var view = new BigWander.Views.UserShow({
       model: user
     })
-    
+
     this._swapView(view);
   },
 

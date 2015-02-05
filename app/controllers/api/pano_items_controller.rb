@@ -10,7 +10,9 @@ class Api::PanoItemsController < ApplicationController
   end
 
   def destroy
-
+    pano_item = PanoItem.find(params[:id])
+    pano_item.destroy
+    render nothing: true
   end
 
   private

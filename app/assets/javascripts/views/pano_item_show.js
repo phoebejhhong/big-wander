@@ -2,6 +2,10 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
   template: JST["pano-item-show"],
   className: "pano-item-show",
 
+  events: {
+    "click .delete-pano-item": "deletePanoItem",
+  },
+
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
     this.lat = Number(this.model.get("lat"));
@@ -42,6 +46,10 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
     this.panorama = new google.maps.StreetViewPanorama(
       this.$(".medium-panorama")[0], panoramaOptions
     );
+  },
+
+  deletePanoItem: function () {
+    this.model.destroy();
   },
 
 })

@@ -2,7 +2,13 @@
 <html>
 <head>
   <title>BigWander</title>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi_Egh41E4EB_gg6QWrg_Ik1bC16nP5Es"></script>
+  <% if Rails.env.production? %>
+    <% api_key = "key=AIzaSyAi_Egh41E4EB_gg6QWrg_Ik1bC16nP5Es" %>
+  <% else %>
+    <% api_key = '' %>
+  <% end %>
+  <script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?<%= api_key %>"></script>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>

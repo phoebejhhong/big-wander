@@ -9,16 +9,16 @@
 [heroku]: http://bigwander.herokuapp.com
 
 All users can:
-- [ ] View random/selected street views (panoramas)
-- [ ] Create accounts
-- [ ] View Others' Galleries
+- [x] View random/selected street views (panoramas)
+- [x] Create accounts
+- [x] View Others' Galleries
 - [ ] Search for galleries by title
 - [ ] Search for panoramas by tag
 
 Signed-in users can:
-- [ ] Create sessions (log in)
-- [ ] Create Galleries
-- [ ] Save panoramas to gallery
+- [x] Create sessions (log in)
+- [x] Create Galleries
+- [x] Save panoramas to gallery
 - [ ] Tag panoramas
 
 

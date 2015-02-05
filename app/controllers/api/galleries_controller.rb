@@ -6,7 +6,7 @@ class Api::GalleriesController < ApplicationController
   end
 
   def create
-    gallery = Gallery.new(pano_item_params)
+    gallery = Gallery.new(gallery_params)
     if gallery.save
       render json: gallery
     else
@@ -15,7 +15,15 @@ class Api::GalleriesController < ApplicationController
   end
 
   def destroy
+    gallery = Gallery.find(params[:id])
+    gallery.destroy
+    render nothing: true
+  end
 
+  private
+
+  def gallery_params
+    params.require(:gallery).permit(:owner_id, :title, :description)
   end
 
 end
