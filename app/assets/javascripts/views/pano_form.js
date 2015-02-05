@@ -25,12 +25,18 @@ BigWander.Views.PanoForm = Backbone.CompositeView.extend({
   savePanorama: function (event) {
     var that = this;
     event.preventDefault();
+    if (!this.model.isNew()) {
+      var currentGallery = this.model.collection.gallery.id
+    }
 
     var params = $(event.currentTarget).serializeJSON();
     this.values ? $.extend(params, this.values) : false;
     this.model.save(params, {
       success: function () {
-        // TODO: remove from collection if reassigned to another gallery
+        // remove from collection if reassigned to another gallery
+        if (currentGallery && that.model.get("gallery_id") !== currentGallery) {
+          that.collection.remove(that.model);
+        };
         that.remove();
       },
       error: function () {

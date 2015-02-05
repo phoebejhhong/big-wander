@@ -54,7 +54,7 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
   renderEditPanoForm: function () {
     // TODO: this can be a modal
     var view = new BigWander.Views.PanoForm({
-      model: this.model
+      model: this.model,
     });
     this.addSubview(".edit-pano-item-form-wrapper", view);
   },

@@ -70,15 +70,22 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
   },
 
   renderSavePanoForm: function () {
+    var that = this;
     // TODO: rendering should only happen once
     if (BigWander.currentUser) {
-      var view = new BigWander.Views.PanoForm({
-        values: this.getCurrentValues(),
-        model: new BigWander.Models.PanoItem,
-        gallery: null,
+      BigWander.currentUser.fetch({
+        success: function () {
+          var view = new BigWander.Views.PanoForm({
+            values: that.getCurrentValues(),
+            model: new BigWander.Models.PanoItem,
+            gallery: null,
+          });
+
+          that.addSubview(".save-pano-form-wrapper", view);
+        },
       });
 
-      this.addSubview(".save-pano-form-wrapper", view);
+
     } else {
       // TODO: sign in required!
     };
