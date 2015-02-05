@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require underscore
 //= require backbone
 //= require big_wander
+//= require jquery.serializeJSON
 //= require bootstrap-sprockets
 //= require_tree ../templates
 //= require_tree ./utils

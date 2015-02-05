@@ -2,3 +2,14 @@
   <div class="main"></div>
 </div>
 <script>$(BigWander.initialize);</script>
+<script>
+$(function() {
+  BigWander.currentUserId = <%= current_user.try(:id) || 0 %>
+  if (BigWander.currentUserId != 0) {
+    BigWander.currentUser = new BigWander.Models.User({
+      id: BigWander.currentUserId
+    });
+    BigWander.currentUser.fetch();
+  };
+})
+</script>

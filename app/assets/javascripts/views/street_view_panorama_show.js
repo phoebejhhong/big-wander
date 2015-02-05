@@ -3,7 +3,7 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
   className: "street-view-panorama-show",
 
   events: {
-    "click .save-view": "saveView",
+    "click .save-view": "renderSavePanoForm",
   },
 
   initialize: function (options) {
@@ -23,6 +23,7 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
   },
 
   renderMap: function () {
+    //setting up
     var panoramaOptions = {
       position: this.loc,
       pov: {
@@ -38,8 +39,10 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
         position: google.maps.ControlPosition.RIGHT_CENTER,
       },
     };
-    window.panorama = this.panorama = new google.maps.StreetViewPanorama(this.$("#big-panorama")[0], panoramaOptions);
-
+    // drawing the street view
+    window.panorama = this.panorama = new google.maps.StreetViewPanorama(
+      this.$("#big-panorama")[0], panoramaOptions
+      );
   },
 
   renderAddress: function () {
@@ -54,9 +57,28 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
     });
   },
 
-  saveView: function () {
-    var panoItem = new BigWander.Models.PanoItem({
-      
-    })
+  // reflecting user's interaction with street view
+  getCurrentValues: function () {
+    var lat = this.panorama.getPosition().k;
+    var lng = this.panorama.getPosition().D;
+    var heading = this.panorama.getPov().heading;
+    var pitch = this.panorama.getPov().pitch;
+
+    return {
+      lat: lat, lng: lng, heading: heading, pitch: pitch
+    }
   },
+
+  renderSavePanoForm: function () {
+    if (BigWander.currentUser) {
+      var view = new BigWander.Views.SavePanoForm({
+        values: this.getCurrentValues()
+      });
+
+      this.addSubview(".save-pano-form-wrapper", view);
+    } else {
+      // sign in required!
+    };
+  },
+
 })
