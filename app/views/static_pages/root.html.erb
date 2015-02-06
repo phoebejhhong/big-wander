@@ -14,7 +14,9 @@ $(function() {
   // TODO: not sure if this is a good idea to put this here
   $(".search-form").on("submit", function(event) {
     event.preventDefault();
-    var query = $(event.currentTarget).find(".search-query").val();
+    $input = $(event.currentTarget).find(".search-query");
+    var query = $input.val();
+    $input.val("");
     Backbone.history.navigate("/search/" + query, {trigger: true});
   })
 })

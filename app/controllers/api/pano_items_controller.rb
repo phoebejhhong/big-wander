@@ -1,5 +1,10 @@
 class Api::PanoItemsController < ApplicationController
 
+  def index
+    @pano_items = PanoItem.search(params[:query])
+    render :index
+  end
+
   def create
     pano_item = PanoItem.new(pano_item_params)
     pano_item.all_tags = params[:all_tags]

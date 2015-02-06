@@ -72,14 +72,14 @@ BigWander.Routers.Router = Backbone.Router.extend({
     });
     galleries.fetch();
 
-    // var pano_items = new BigWander.Collections.PanoItemSearches([], {
-    //   query: query
-    // });
-    // pano_items.fetch();
+    var panoItems = new BigWander.Collections.PanoItemSearches([], {
+      query: query
+    });
+    panoItems.fetch();
 
     var view = new BigWander.Views.SearchResult({
       galleries: galleries,
-      // pano_items: pano_items,
+      panoItems: panoItems,
     });
 
     this._swapView(view);

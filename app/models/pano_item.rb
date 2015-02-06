@@ -5,17 +5,15 @@ class PanoItem < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
-<<<<<<< HEAD
   def self.search(query)
     if query
-      # PanoItem.where("ta LIKE ?", "%#{query}%")
+      tags = Tag.where("label LIKE ?", "%#{query}%")
+      PanoItem.includes(:taggings).where(taggings: {tag_id: tags})
     else
-      # PanoItem.all
+      PanoItem.all
     end
   end
 
-=======
->>>>>>> 9ee3dd4e72eb94baedf5d74fd5b9a98e4db316d7
   def all_tags
     self.tags.map(&:label).join(",")
   end

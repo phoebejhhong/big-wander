@@ -7,26 +7,21 @@ BigWander.Views.SearchResult = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.galleries = options.galleries;
-    // this.pano_items = options.pano_items;
-    this.listenTo(this.galleries, 'sync', this.render);
-    // this.listenTo(this.pano_items), 'sync', this.render);
-    // this.listenTo(this.collection, 'add', this.addGallery);
-    // this.listenTo(this.collection, 'change', this.render);
-    // this.listenTo(this.collection, 'remove', this.removeGallery);
+    this.panoItems = options.panoItems;
+    this.listenTo(this.galleries, 'sync', this.renderGalleries);
+    this.listenTo(this.panoItems, 'sync', this.renderPanoItems);
   },
 
   render: function () {
     var content = this.template({
-      user: this.model
     });
     this.$el.html(content);
-    this.renderGalleries();
 
     return this;
   },
 
   addGallery: function (gallery) {
-    if (this.findSubview(gallery, ".galleries-index")) {
+    if (this.findSubview(gallery, ".galleries-search-result")) {
       this.removeGallery(gallery);
     };
 
@@ -34,17 +29,47 @@ BigWander.Views.SearchResult = Backbone.CompositeView.extend({
       model: gallery,
     })
 
-    this.addSubview(".galleries-index", view);
+    this.addSubview(".galleries-search-result", view);
   },
 
   removeGallery: function (gallery) {
-    var subview = this.findSubview(gallery, ".galleries-index");
-    this.removeSubview(".galleries-index", subview);
+    var subview = this.findSubview(gallery, ".galleries-search-result");
+    this.removeSubview(".galleries-search-result", subview);
   },
 
   renderGalleries: function () {
-    this.galleries.each(this.addGallery.bind(this));
+    if (this.galleries.length === 0) {
+      this.$(".galleries-search-result").append("No Gallery Found");
+    } else {
+      this.galleries.each(this.addGallery.bind(this));
+    };
   },
 
+  addPanoItem: function (panoItem) {
+    if (this.findSubview(panoItem, ".pano-items-search-result")) {
+      this.removePanoItem(panoItem);
+    };
+
+    var view = new BigWander.Views.PanoItemShow({
+      model: panoItem,
+      gallery: null,
+    });
+
+    this.addSubview(".pano-items-search-result", view);
+    google.maps.event.trigger(view.panorama, 'resize')
+  },
+
+  removePanoItem: function (panoItem) {
+    var subview = this.findSubview(panoItem, ".pano-items-search-result");
+    this.removeSubview(".pano-items-search-result", subview);
+  },
+
+  renderPanoItems: function () {
+    if (this.panoItems.length === 0) {
+      this.$(".pano-items-search-result").append("No Street View Found");
+    } else {
+      this.panoItems.each(this.addPanoItem.bind(this));
+    };
+  },
 
 })

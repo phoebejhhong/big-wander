@@ -12,8 +12,8 @@ All users can:
 - [x] View random/selected street views (panoramas)
 - [x] Create accounts
 - [x] View Others' Galleries
-- [ ] Search for galleries by title
-- [ ] Search for panoramas by tag
+- [x] Search for galleries by title
+- [x] Search for panoramas by tag
 
 Signed-in users can:
 - [x] Create sessions (log in)
