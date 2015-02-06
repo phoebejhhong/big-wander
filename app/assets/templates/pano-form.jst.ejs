@@ -1,7 +1,7 @@
 <% var currentGalleryId = (panoItem.isNew() ? null : panoItem.collection.gallery.id); %>
 <% var titlePlaceholder = (panoItem.isNew() ? "Name your street view" : ""); %>
 <% var titleValue = (panoItem.isNew() ? "" : panoItem.escape("title")); %>
-<% var allTagsPlaceholder = (panoItem.isNew() ? "Tag1, Tag2, Longer Tag, ..." : ""); %>
+<% var allTagsPlaceholder = ((panoItem.isNew() || panoItem.escape("all_tags") === "")  ? "Tag1, Tag2, Longer Tag, ..." : ""); %>
 <% var allTagsValue = (panoItem.isNew() ? "" : panoItem.escape("all_tags")); %>
 
 Choose Gallery:
