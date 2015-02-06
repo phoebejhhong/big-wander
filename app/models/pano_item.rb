@@ -9,7 +9,7 @@ class PanoItem < ActiveRecord::Base
     if query
       # PanoItem.where("ta LIKE ?", "%#{query}%")
     else
-      # Gallery.all
+      # PanoItem.all
     end
   end
 

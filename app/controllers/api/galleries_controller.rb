@@ -1,7 +1,7 @@
 class Api::GalleriesController < ApplicationController
 
   def index
-    @galleries = Gallery.search(params[:search])
+    @galleries = Gallery.search(params[:query])
     render :index
   end
 

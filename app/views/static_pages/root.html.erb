@@ -11,5 +11,11 @@ $(function() {
     });
     BigWander.currentUser.fetch();
   };
+  // TODO: not sure if this is a good idea to put this here
+  $(".search-form").on("submit", function(event) {
+    event.preventDefault();
+    var query = $(event.currentTarget).find(".search-query").val();
+    Backbone.history.navigate("/search/" + query, {trigger: true});
+  })
 })
 </script>

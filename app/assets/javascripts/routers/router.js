@@ -19,7 +19,10 @@ BigWander.Routers.Router = Backbone.Router.extend({
   },
 
   randomPanorama: function () {
+    // old slow pure way of picking random coordiates used to be like...
     // BigWander.goToRandomPanorama(BigWander.createRandomLat(), BigWander.createRandomLng());
+
+    // instead I decided to keep database
     var random_idx = Math.floor(Math.random() * BigWander.panoramas.length);
     var panorama = BigWander.panoramas.models[random_idx];
     var url = "p/" + panorama.get("lat") +"/" + panorama.get("lng") +
@@ -46,7 +49,7 @@ BigWander.Routers.Router = Backbone.Router.extend({
     user.fetch();
     var view = new BigWander.Views.UserShow({
       model: user
-    })
+    });
 
     this._swapView(view);
   },
@@ -58,17 +61,28 @@ BigWander.Routers.Router = Backbone.Router.extend({
     gallery.fetch();
     var view = new BigWander.Views.GalleryShow({
       model: gallery
-    })
+    });
 
     this._swapView(view);
   },
 
   searchQuery: function (query) {
-    window.galleries = new BigWander.Collections.Galleries([], {
+    var galleries = new BigWander.Collections.GallerySearches([], {
       query: query
     });
     galleries.fetch();
-    debugger
+
+    // var pano_items = new BigWander.Collections.PanoItemSearches([], {
+    //   query: query
+    // });
+    // pano_items.fetch();
+
+    var view = new BigWander.Views.SearchResult({
+      galleries: galleries,
+      // pano_items: pano_items,
+    });
+
+    this._swapView(view);
   },
 
   _swapView: function (view) {

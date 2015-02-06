@@ -1,4 +1,4 @@
-json.galleries @galleries do |gallery|
+json.array! @galleries.each do |gallery|
   json.extract! gallery, :id, :title, :description, :owner_id,
                 :created_at, :updated_at
   json.pano_items gallery.pano_items do |pano_item|
@@ -8,6 +8,4 @@ json.galleries @galleries do |gallery|
       json.extract! tag, :id, :label
     end
   end
-
 end
-#

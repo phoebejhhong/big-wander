@@ -1,8 +1,12 @@
 <header>
   <h1><a href="/">BigWander</a></h1>
-
   <a href="/">GO to random view</a>
+
   <ul class="header-menu nav navbar-nav navbar-right"">
+    <form class="search-form">
+      <input type="text" class="search-query" placeholder="Search!">
+    </form>
+
     <% if signed_in? %>
       <li><a href="<%= "/users/" + current_user.id.to_s %>">My Galleries</a></li>
       <%= button_to "Sign out", session_url, method: :delete,
@@ -13,13 +17,12 @@
     <% end %>
   </div>
 </header>
-<div class="container">
 
+<div class="container">
   <% if flash[:errors] %>
   <div class="alert alert-warning alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
     <%= flash[:errors].join("<br>").html_safe %>
   </div>
   <% end %>
-
 </div>
