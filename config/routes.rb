@@ -1,3 +1,9 @@
+class XHRConstraint
+  def matches?(request)
+    !request.xhr? && !(request.url =~ /\.json$/ && ::Rails.env == 'development')
+  end
+end
+
 Rails.application.routes.draw do
   root to: 'static_pages#root'
 
@@ -7,7 +13,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :panoramas, only: [:show, :index]
     resources :users, only: [:show]
-    resources :galleries, only: [:create, :destroy, :show, :update]
+    resources :galleries, only: [:index, :create, :destroy, :show, :update]
     resources :pano_items, only: [:create, :destroy, :update]
+    resources :tags, only: [:create, :destroy]
+    resources :searches, only: [:show]
   end
+
+  get '(*url)' => 'static_pages#root', :constraints => XHRConstraint.new
 end

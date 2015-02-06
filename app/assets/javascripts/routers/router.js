@@ -5,6 +5,7 @@ BigWander.Routers.Router = Backbone.Router.extend({
     "p/:lat/:lgn": "streetViewPanoramaShow",
     "users/:id": "userShow",
     "galleries/:id": "galleryShow",
+    "search/:query": "searchQuery",
   },
 
   initialize: function (options) {
@@ -60,6 +61,14 @@ BigWander.Routers.Router = Backbone.Router.extend({
     })
 
     this._swapView(view);
+  },
+
+  searchQuery: function (query) {
+    window.galleries = new BigWander.Collections.Galleries([], {
+      query: query
+    });
+    galleries.fetch();
+    debugger
   },
 
   _swapView: function (view) {

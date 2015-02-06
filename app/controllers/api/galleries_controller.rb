@@ -1,5 +1,10 @@
 class Api::GalleriesController < ApplicationController
 
+  def index
+    @galleries = Gallery.search(params[:search])
+    render :index
+  end
+
   def show
     @gallery = Gallery.find(params[:id])
     render :show

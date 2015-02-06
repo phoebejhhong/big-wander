@@ -73,6 +73,7 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
     var that = this;
     // TODO: rendering should only happen once
     if (BigWander.currentUser) {
+      // get current user's gallery lists
       BigWander.currentUser.fetch({
         success: function () {
           var view = new BigWander.Views.PanoForm({
@@ -84,8 +85,6 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
           that.addSubview(".save-pano-form-wrapper", view);
         },
       });
-
-
     } else {
       // TODO: sign in required!
     };

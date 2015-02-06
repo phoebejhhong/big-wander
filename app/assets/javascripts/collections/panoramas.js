@@ -1,5 +1,5 @@
 BigWander.Collections.Panoramas = Backbone.Collection.extend({
-  url: 'api/panoramas',
+  url: '/api/panoramas',
   model: BigWander.Models.Panorama,
 
   getOrFetch: function (id) {

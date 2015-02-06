@@ -1,5 +1,5 @@
 BigWander.Models.User = Backbone.Model.extend({
-  urlRoot: 'api/users',
+  urlRoot: '/api/users',
 
   galleries: function () {
     if (!this._galleries) {

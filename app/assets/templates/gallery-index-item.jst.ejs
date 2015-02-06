@@ -1,5 +1,5 @@
 <h5>
-  <a href="<%= '#galleries/' + gallery.id %>"><%= gallery.escape("title") %></a>
+  <a href="<%= '/galleries/' + gallery.id %>"><%= gallery.escape("title") %></a>
 </h5>
 <%= gallery.escape("description") %>
 <% if (BigWander.currentUser && BigWander.currentUser.id === this.model.get("owner_id")) { %>
@@ -9,4 +9,4 @@
 <% }; %>
 <ul class="pano-items-index">
 </ul>
-<a href="<%= '#galleries/' + gallery.id %>">View all!</a>
+<a href="<%= '/galleries/' + gallery.id %>">View all!</a>

@@ -1,10 +1,10 @@
 <header>
-  <h1><a href="/#">BigWander</a></h1>
+  <h1><a href="/">BigWander</a></h1>
 
-  <a href="/#">GO to random view</a>
+  <a href="/">GO to random view</a>
   <ul class="header-menu nav navbar-nav navbar-right"">
     <% if signed_in? %>
-      <li><a href="<%= "#users/" + current_user.id.to_s %>">My Galleries</a></li>
+      <li><a href="<%= "/users/" + current_user.id.to_s %>">My Galleries</a></li>
       <%= button_to "Sign out", session_url, method: :delete,
       class: "btn btn-primary navbar-btn" %>
     <% else %>

@@ -1,5 +1,5 @@
 BigWander.Models.Gallery = Backbone.Model.extend({
-  urlRoot: 'api/galleries',
+  urlRoot: '/api/galleries',
 
   initialize: function (options) {
   },

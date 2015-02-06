@@ -1,5 +1,5 @@
 BigWander.Collections.PanoItems = Backbone.Collection.extend({
-  url: 'api/pano_items',
+  url: '/api/pano_items',
   model: BigWander.Models.PanoItem,
 
   initialize: function (models, options) {

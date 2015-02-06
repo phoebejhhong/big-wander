@@ -4,6 +4,7 @@ BigWander.Collections.Galleries = Backbone.Collection.extend({
 
   initialize: function (models, options) {
     this.user = options.user;
+    this.query = options.query;
   },
 
   getOrFetch: function (id) {

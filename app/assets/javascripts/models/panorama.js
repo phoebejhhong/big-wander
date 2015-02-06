@@ -1,3 +1,3 @@
 BigWander.Models.Panorama = Backbone.Model.extend({
-  urlRoot: 'api/panoramas',
+  urlRoot: '/api/panoramas',
 })

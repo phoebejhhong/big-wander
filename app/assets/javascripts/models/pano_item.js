@@ -1,5 +1,5 @@
 BigWander.Models.PanoItem = Backbone.Model.extend({
-  urlRoot: 'api/pano_items',
+  urlRoot: '/api/pano_items',
 
   initialize: function () {
     this.getImageUrl();
