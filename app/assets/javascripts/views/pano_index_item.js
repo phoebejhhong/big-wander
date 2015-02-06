@@ -4,7 +4,6 @@ BigWander.Views.PanoIndexItem = Backbone.CompositeView.extend({
   tagName: "li",
 
   initialize: function (options) {
-    // this.listenTo(this.model, 'sync', this.render());
   },
 
   render: function () {

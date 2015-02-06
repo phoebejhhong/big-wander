@@ -1,0 +1,8 @@
+<h5>
+  <a href="<%= '/galleries/' + gallery.id %>"><%= gallery.escape("title") %></a>
+</h5>
+<%= gallery.escape("description") %>
+by <a href="<%= '/users/' + owner["id"] %>"><%= owner["username"]%></a>
+<ul class="pano-items-index">
+</ul>
+<a href="<%= '/galleries/' + gallery.id %>">View all!</a>

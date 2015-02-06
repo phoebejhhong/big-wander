@@ -1,11 +1,12 @@
 json.array! @galleries.each do |gallery|
   json.extract! gallery, :id, :title, :description, :owner_id,
                 :created_at, :updated_at
-  json.pano_items gallery.pano_items do |pano_item|
+  # serch result will show only first two items
+  json.pano_items gallery.pano_items[0..1] do |pano_item|
     json.extract! pano_item, :id, :title, :lat, :lng,
     :heading, :pitch,:all_tags, :created_at, :updated_at
-    json.tags pano_item.tags do |tag|
-      json.extract! tag, :id, :label
-    end
+  end
+  json.owner do
+    json.extract! gallery.owner, :id, :username
   end
 end

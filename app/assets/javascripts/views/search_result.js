@@ -25,7 +25,7 @@ BigWander.Views.SearchResult = Backbone.CompositeView.extend({
       this.removeGallery(gallery);
     };
 
-    var view = new BigWander.Views.GalleryIndexItem({
+    var view = new BigWander.Views.GallerySearchShow({
       model: gallery,
     })
 
@@ -50,11 +50,9 @@ BigWander.Views.SearchResult = Backbone.CompositeView.extend({
       this.removePanoItem(panoItem);
     };
 
-    var view = new BigWander.Views.PanoItemShow({
+    var view = new BigWander.Views.PanoItemSearchShow({
       model: panoItem,
-      gallery: null,
     });
-
     this.addSubview(".pano-items-search-result", view);
     google.maps.event.trigger(view.panorama, 'resize')
   },

@@ -3,5 +3,4 @@ BigWander.Models.Tag = Backbone.Model.extend({
 
   initialize: function (options) {
   },
-
 })

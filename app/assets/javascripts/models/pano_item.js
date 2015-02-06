@@ -2,7 +2,6 @@ BigWander.Models.PanoItem = Backbone.Model.extend({
   urlRoot: '/api/pano_items',
 
   initialize: function () {
-    this.getImageUrl();
   },
 
   getImageUrl: function () {
@@ -10,7 +9,13 @@ BigWander.Models.PanoItem = Backbone.Model.extend({
     url += "&location=" + this.get("lat") + "," + this.get("lng");
     url += "&heading=" + this.get("heading");
     url += "&pitch=" + this.get("pitch");
-    this.imageUrl = url;
+    return url;
   },
+
+  getPanoramaViewUrl: function () {
+    var url = "/p/" + this.get("lat") + "/" + this.get("lng") + "/"
+    url += this.get("heading") +"/" + this.get("pitch")
+    return url;
+  }
 
 })
