@@ -3,7 +3,8 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
   className: "street-view-panorama-show",
 
   events: {
-    "click .save-view": "renderSavePanoForm",
+    "click .show-form": "renderSavePanoForm",
+    "click .close-form": "closeSavePanoForm",
   },
 
   initialize: function (options) {
@@ -41,7 +42,7 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
     };
     // drawing the street view
     this.panorama = new google.maps.StreetViewPanorama(
-      this.$("#big-panorama")[0], panoramaOptions
+      this.$("#full-panorama")[0], panoramaOptions
       );
   },
 
@@ -51,7 +52,7 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
     geocoder.geocode({'latLng': this.loc}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[1]) {
-          that.$(".address").append(results[1].formatted_address);
+          window.$(".address").append(results[1].formatted_address);
         }
       }
     });
@@ -71,7 +72,7 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
 
   renderSavePanoForm: function () {
     var that = this;
-    // TODO: rendering should only happen once
+    this.$(".show-form").removeClass("show-form").addClass("close-form").html("Close");
     if (BigWander.currentUser) {
       // get current user's gallery lists
       BigWander.currentUser.fetch({
@@ -88,6 +89,12 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
     } else {
       // TODO: sign in required!
     };
+  },
+
+  closeSavePanoForm: function () {
+    var subview = this.subviews(".save-pano-form-wrapper")[0];
+    this.removeSubview(".save-pano-form-wrapper", subview);
+    this.$(".close-form").removeClass("close-form").addClass("show-form").html("Save this view");
   },
 
 })

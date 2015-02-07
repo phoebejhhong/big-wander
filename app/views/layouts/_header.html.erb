@@ -1,19 +1,43 @@
 <header>
-  <h1><a href="/">BigWander</a></h1>
-  <a href="/">GO to random view</a>
+  <div class="row">
+    <div class="col-md-3 header-title">
+      <h1>
+        <a href="/">BigWander</a>
+      </h1>
+    </div>
+    <div class="col-md-2 random-button">
+      <a href="/">
+        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+        GO to random view</a>
+    </div>
+    <div class="col-md-5 nothing">
+    </div>
+    <div class="col-md-2 search-form-wrapper">
+      <form class="search-form">
+        <input type="text" class="search-query" placeholder="Search!">
+        <button type="submit" class="search-button">
+          <span class="glyphicon glyphicon-search"></span>
+        </button>
+      </form>
+    </div>
+  </div>
 
-  <ul class="header-menu nav navbar-nav navbar-right"">
-    <form class="search-form">
-      <input type="text" class="search-query" placeholder="Search!">
-    </form>
-
+  <div class="row">
+    <div class="col-md-10"></div>
     <% if signed_in? %>
-      <li><a href="<%= "/users/" + current_user.id.to_s %>">My Galleries</a></li>
-      <%= button_to "Sign out", session_url, method: :delete,
-      class: "btn btn-primary navbar-btn" %>
+      <div class="col-md-1 my-gallery">
+        <a href="<%= "/users/" + current_user.id.to_s %>">My Galleries</a>
+      </div>
+      <div class="col-md-1 sign-out">
+        <%= link_to "Sign out", session_url, method: :delete %>
+      </div>
     <% else %>
+    <div class="col-md-1 log-in">
       <li><%= link_to "Log in", new_session_url %></li>
+    </div>
+    <div class="col-md-1 sign-up">
       <li><%= link_to "Sign up", new_user_url %></li>
+    </div>
     <% end %>
   </div>
 </header>

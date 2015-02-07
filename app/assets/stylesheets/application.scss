@@ -19,12 +19,15 @@
    margin: 0;
    border: 0;
    padding: 0;
+   font-family: 'Roboto';
+   text-decoration: none;
  }
 
  html, body {
    height: 100%;
  }
 
+ /* header starts */
  header {
    height: 100px;
    width: 100%;
@@ -32,16 +35,84 @@
    position: absolute;
    top: 0;
    left: 0;
-   background: #fff;
-   opacity: 0.6;
-   filter: alpha(opacity=60);
+   padding: 10px;
+   opacity: 0.8;
+   filter: alpha(opacity=80);
  }
+
+ header a, header a:hover, header a:active,
+ header a:visited, header a:focus {
+   color: #fff;
+   text-decoration: none;
+ }
+
+ header h1 {
+   color: #fff;
+   margin: 0;
+   padding: 5px 5px 5px 20px;
+   font-size: 38px;
+   text-shadow: 1px 1px 2px #212121;
+ }
+
+ header h1 a{
+   font-family: 'Patua One';
+ }
+
+ header .col-md-1, header .col-md-2, header .col-md-3  {
+   height: 60px;
+   padding: 5px;
+ }
+
+.header-title {
+  background: #6200EA;
+}
+
+.random-button, .sign-out, .my-gallery, .sign-up, .log-in {
+  font-size: 18px;
+  background: #651FFF;
+  line-height: 50px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+.random-button {
+  font-size: 18px;
+}
+
+.search-form-wrapper {
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+}
+.search-query {
+  position: absolute;
+  left: 0;
+  width: 80%;
+  border: 3px solid #6200EA;
+  height: 38px;
+  padding: 5px;
+}
+
+.search-button {
+  position: absolute;
+  right: 0;
+  width: 20%;
+  height: 38px;
+  color: #fff;
+  background-color: #6200EA;
+}
+
+ /* header ends */
 
  .wrapper {
    min-height: 100%;
  }
 
-#big-panorama {
+
+/* street view panorama show starts */
+
+#full-panorama {
   position: fixed !important;
   width: 100%;
   height: 100%;
@@ -49,12 +120,70 @@
   top: 0;
   z-index: 1;
 }
+
 .information {
   position: fixed;
-  top: 50px;
-  left: 50px;
+  color: white;
+  font-size: 16px;
+  padding: 0px;
+  top: 75px;
   z-index: 5;
+  background: #7C4DFF;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
 }
+
+.address {
+  float: left;
+  max-width: 450px;
+  padding: 5px 0px 5px 20px ;
+}
+
+a.show-form, a.close-form {
+  float: right;
+  padding: 5px;
+  background-color: #B388FF;
+  weight: 700;
+  color: white;
+  text-decoration: none;
+}
+
+.save-pano-form-wrapper{
+  float: left;
+  padding: 5px 0px 5px 20px ;
+}
+
+.pano-form input, .pano-form select {
+  color: #212121;
+  height: 32px;
+}
+
+.pano-form select {
+  width: 140px;
+}
+
+input.title-input {
+  padding: 5px;
+  width: 300px;
+}
+
+input.tag-input {
+  margin: 10px 0 5px 5px;
+  padding: 5px;
+  width: 400px;
+}
+
+input.pano-item-save-button {
+  position: absolute;
+  padding: 5px;
+  background-color: #6200EA;
+  right: 0px;
+  bottom: 0px;
+  color: #fff;
+}
+
+/* street view panorama show ends */
+
 .buttons {
   position: fixed;
 }
@@ -66,6 +195,10 @@
 
 .input-error {
   background-color: orange;
+}
+
+.large-panorama {
+  // how big this should be?
 }
 
 .medium-panorama {

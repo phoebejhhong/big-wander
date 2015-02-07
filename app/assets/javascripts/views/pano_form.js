@@ -10,7 +10,6 @@ BigWander.Views.PanoForm = Backbone.CompositeView.extend({
 
   events: {
     "submit": "savePanorama",
-    "click .close-save-form": "closeForm",
   },
 
   render: function () {
@@ -44,9 +43,4 @@ BigWander.Views.PanoForm = Backbone.CompositeView.extend({
       }
     });
   },
-
-  closeForm: function () {
-    this.remove();
-  },
-
 })
