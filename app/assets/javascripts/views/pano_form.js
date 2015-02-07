@@ -6,6 +6,7 @@ BigWander.Views.PanoForm = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.collection = this.model.collection;
     this.values = options.values;
+    this.superView = options.superView;
   },
 
   events: {
@@ -36,7 +37,8 @@ BigWander.Views.PanoForm = Backbone.CompositeView.extend({
         if (currentGallery && that.model.get("gallery_id") !== currentGallery) {
           that.collection.remove(that.model);
         };
-        that.remove();
+
+        that.superView.closeSavePanoForm();
       },
       error: function () {
         that.$(".title-input").addClass("input-error");
