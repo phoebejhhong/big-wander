@@ -1,9 +1,13 @@
 <div class="container">
-  <h3><%= user.escape("username") %> 's Galleries</h3>
-  <% if (BigWander.currentUser && BigWander.currentUser.id === user.id) { %>
-    <button class="btn new-gallery">+ New Gallery!</button>
-    <div class="new-gallery-form-wrapper"></div>
-  <% }; %>
+  <div class="user-show-header-wrapper clearfix">
+    <h3 class="user-show-title"><%= user.escape("username") %> 's Galleries</h3>
+    <% if (BigWander.currentUser && BigWander.currentUser.id === user.id) { %>
+      <button class="new-gallery">
+        <span class="glyphicon glyphicon-plus"></span>
+      </button>
+      <div class="new-gallery-form-wrapper"></div>
+    <% }; %>
+  </div>
   <div class="galleries-index">
     <% if (user.galleries().length === 0) { %>
       No Galleries

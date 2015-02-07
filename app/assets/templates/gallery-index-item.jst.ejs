@@ -1,12 +1,22 @@
-<h5>
-  <a href="<%= '/galleries/' + gallery.id %>"><%= gallery.escape("title") %></a>
+<h5 class="gallery-item-title">
+  <a href="<%= '/galleries/' + gallery.id %>">
+    <%= gallery.escape("title") %>
+  </a>
 </h5>
 <%= gallery.escape("description") %>
 <% if (BigWander.currentUser && BigWander.currentUser.id === this.model.get("owner_id")) { %>
-  <a href="javascript:void(0)" class="edit-gallery">Edit</a> |
-  <a href="javascript:void(0)" class="delete-gallery">Delete</a>
+  <div class="gallery-item-buttons">
+    <a href="javascript:void(0)" class="edit-gallery">
+      <span class="glyphicon glyphicon-edit"></span>
+    </a>
+    <a href="javascript:void(0)" class="delete-gallery">
+      <span class="glyphicon glyphicon-trash"></span>
+      </a>
+  </div>
   <div class="edit-gallery-form-wrapper"></div>
 <% }; %>
 <ul class="pano-items-index">
 </ul>
-<a href="<%= '/galleries/' + gallery.id %>">View all!</a>
+<div class="view-all-wrapper">
+  <a href="<%= '/galleries/' + gallery.id %>">View all</a>
+</div>

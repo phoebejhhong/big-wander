@@ -5,7 +5,7 @@ BigWander.Models.PanoItem = Backbone.Model.extend({
   },
 
   getImageUrl: function () {
-    var url = "https://maps.googleapis.com/maps/api/streetview?size=400x400";
+    var url = "https://maps.googleapis.com/maps/api/streetview?size=600x400";
     url += "&location=" + this.get("lat") + "," + this.get("lng");
     url += "&heading=" + this.get("heading");
     url += "&pitch=" + this.get("pitch");
