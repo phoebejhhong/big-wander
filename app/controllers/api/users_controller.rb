@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:galleries).find(params[:id])
     render :show
   end
 end

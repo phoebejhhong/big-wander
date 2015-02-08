@@ -1,12 +1,12 @@
 class Api::GalleriesController < ApplicationController
 
   def index
-    @galleries = Gallery.search(params[:query])
+    @galleries = Gallery.includes(:pano_items).search(params[:query])
     render :index
   end
 
   def show
-    @gallery = Gallery.find(params[:id])
+    @gallery = Gallery.includes(:pano_items).find(params[:id])
     render :show
   end
 
