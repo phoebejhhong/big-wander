@@ -98,6 +98,7 @@
 .header-title {
   background:  $color700;
   padding: 0 !important;
+  width: 330px;
 }
 
 .random-button, .sign-out, .my-gallery, .sign-up, .log-in {
@@ -112,8 +113,78 @@
 }
 
 .random-button {
+  width: 150px;
   font-size: 18px;
+  -webkit-transition:all 0.5s ease-in-out;
+  -moz-transition:all 0.5s ease-in-out;
+  -o-transition:all 0.5s ease-in-out;
+  transition:all 0.5s ease-in-out;
 }
+
+.random-button a:after {
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  content: '';
+  vertical-align: middle;
+  line-height: 60px;
+  -webkit-transition:all 0.5s ease-in-out;
+  -moz-transition:all 0.5s ease-in-out;
+  -o-transition:all 0.5s ease-in-out;
+  transition:all 0.5s ease-in-out;
+
+  background: #fff;
+  a {
+    color: $color400;
+  }
+}
+.random-button:hover a{
+  color: $color400;
+}
+
+.random-button:hover a:after {
+  width: 100%;
+  content: 'random!';
+}
+
+.featured-and-about-wrapper {
+  width: 150px;
+  background: $color200;
+  div {
+    height: 25px;
+    vertical-align: middle;
+    line-height: 25px;
+  }
+  a {
+    display: block;
+  }
+}
+
+.menu-hide {
+  width: auto;
+  background: $light-gray;
+  vertical-align: middle;
+  line-height: 50px;
+  color: #fff;
+
+  a {
+    display: block
+  }
+
+  span:first-child {
+    position: relative;
+    left: 5px;
+  }
+
+  span:last-child {
+    position: relative;
+    left: -5px;  }
+}
+
+
 
 .search-form-wrapper {
   position: absolute;
@@ -314,6 +385,7 @@ input.pano-item-save-button {
   padding-bottom: 0px;
   margin: 10px;
   width: 600px;
+  min-height: 120px;
   background: #fff;
   box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
 }

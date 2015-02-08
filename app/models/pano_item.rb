@@ -19,7 +19,7 @@ class PanoItem < ActiveRecord::Base
   end
 
   def all_tags=(labels)
-    self.tags = labels.split(',').map(&:strip).map do |label|
+    self.tags = labels.downcase.split(',').map(&:strip).map do |label|
       Tag.where(label: label).first_or_create!
     end
   end
