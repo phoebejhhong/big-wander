@@ -28,6 +28,7 @@ BigWander.Views.GalleryForm = Backbone.CompositeView.extend({
     this.model.save(params, {
       success: function () {
         that.collection.add(that.model, {merge: true});
+        BigWander.currentUser.galleries().add(that.model, {merge: true});
         that.remove();
       },
       error: function () {
