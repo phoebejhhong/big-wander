@@ -6,7 +6,7 @@ BigWander.Views.GallerySearchShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.collection = this.model.panoItems()
+    this.collection = this.model.panoItems().slice(0, 2)
   },
 
   render: function () {
@@ -28,7 +28,7 @@ BigWander.Views.GallerySearchShow = Backbone.CompositeView.extend({
   },
 
   renderPanoItems: function () {
-    this.collection.each(this.addPanoItem.bind(this));
+    _(this.collection).each(this.addPanoItem.bind(this));
   },
 
   deleteGallery: function () {

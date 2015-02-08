@@ -1,11 +1,23 @@
 <div class="medium-panorama">
 </div>
-
-Title: <%= panoItem.escape("title") %><br />
-in <a href="<%= '/galleries/' + gallery["id"]  %>"><%= gallery["title"] %></a>
-by <a href="<%= '/users/' + owner["id"]  %>"><%= owner["username"] %></a>
+<div class="pano-item-header clearfix">
+  <div class="pano-item-title">
+    <%= panoItem.escape("title") %>
+  </div>
+  <div class="pano-item-buttons">
+    <a href="<%= panoItem.getPanoramaViewUrl() %>" class="view-full-size"
+      data-toggle="tooltip" data-placement="left" title="View full size">
+      <span class="glyphicon glyphicon-picture"></span>
+    </a>
+  </div>
+</div>
+<div class="pano-item-information">
+  in <a href="<%= '/galleries/' + gallery["id"]  %>"><%= gallery["title"] %></a>
+  by <a href="<%= '/users/' + owner["id"]  %>"><%= owner["username"] %></a>
+</div>
 
 <% if (panoItem.escape("all_tags")) {%>
-  Tags: <%= panoItem.escape("all_tags") %>
+  <div class="pano-item-tags">
+    <span>Tags: </span><%= panoItem.escape("all_tags") %>
+  </div>
 <% }; %>
-  <a href="<%= panoItem.getPanoramaViewUrl() %>">>> View full-size</a>

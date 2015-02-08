@@ -1,6 +1,6 @@
 BigWander.Views.PanoItemSearchShow = Backbone.CompositeView.extend({
   template: JST["pano-item-search-show"],
-  className: "pano-item-search-show",
+  className: "pano-item-search-show clearfix",
 
   events: {
   },
@@ -23,6 +23,7 @@ BigWander.Views.PanoItemSearchShow = Backbone.CompositeView.extend({
       owner: this.owner,
     });
     this.$el.html(content);
+    this.$('.view-full-size').tooltip();
     this.renderMap();
 
     return this;

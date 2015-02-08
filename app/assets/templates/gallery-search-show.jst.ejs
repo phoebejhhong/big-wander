@@ -1,8 +1,14 @@
-<h5>
+<h3 class="gallery-item-title">
   <a href="<%= '/galleries/' + gallery.id %>"><%= gallery.escape("title") %></a>
-</h5>
-<%= gallery.escape("description") %>
-by <a href="<%= '/users/' + owner["id"] %>"><%= owner["username"]%></a>
+</h3>
+  <%= gallery.escape("description") %>
+<div class="gallery-owner">
+  curated by <a href="<%= '/users/' + owner["id"] %>"><%= owner["username"]%></a>
+</div>
 <ul class="pano-items-index">
 </ul>
-<a href="<%= '/galleries/' + gallery.id %>">View all!</a>
+<% if (gallery.panoItems().length > 2) { %>
+  <div class="view-all-wrapper">
+    <a href="<%= '/galleries/' + gallery.id %>">View all</a>
+  </div>
+<% }; %>
