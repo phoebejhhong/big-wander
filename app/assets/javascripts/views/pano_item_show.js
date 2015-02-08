@@ -5,6 +5,7 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
   events: {
     "click .delete-pano-item": "deletePanoItem",
     "click .edit-pano-item": "renderEditPanoForm",
+    "click .close-pano-form": "closeEditPanoForm",
   },
 
   initialize: function (options) {
@@ -23,6 +24,7 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
       gallery: this.gallery,
     });
     this.$el.html(content);
+    this.$('.view-full-size').tooltip();
     this.renderMap();
 
     return this;
@@ -52,11 +54,18 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
   },
 
   renderEditPanoForm: function () {
-    // TODO: this can be a modal
+    this.$(".edit-pano-item").removeClass("edit-pano-item").addClass("close-pano-form");
     var view = new BigWander.Views.PanoForm({
       model: this.model,
+      superView: this,
     });
     this.addSubview(".edit-pano-item-form-wrapper", view);
+  },
+
+  closeEditPanoForm : function () {
+    var subview = this.subviews(".edit-pano-item-form-wrapper")[0];
+    this.removeSubview(".edit-pano-item-form-wrapper", subview);
+    this.$(".close-pano-form").removeClass("close-pano-form").addClass("edit-pano-item");
   },
 
   deletePanoItem: function () {

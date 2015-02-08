@@ -4,7 +4,7 @@
 <% var allTagsPlaceholder = ((panoItem.isNew() || panoItem.escape("all_tags") === "")  ? "Tag1, Tag2, Longer Tag, ..." : ""); %>
 <% var allTagsValue = (panoItem.isNew() ? "" : panoItem.escape("all_tags")); %>
 
-Choose Gallery:
+<!-- <span>Choose Gallery:</span> -->
 <select name="gallery_id">
   <% BigWander.currentUser.galleries().each(function (gallery) { %>
     <option value="<%= gallery.id %>"

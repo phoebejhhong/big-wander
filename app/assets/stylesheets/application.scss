@@ -32,7 +32,7 @@
    margin: 0;
    border: 0;
    padding: 0;
-   font-family: 'Roboto';
+   font-family: 'Roboto', verdana;
    text-decoration: none;
  }
 
@@ -58,6 +58,16 @@
  .input-error {
    background-color: orange;
  }
+
+
+ .tooltip-inner {
+   background: $medium-dark-gray;
+ }
+
+ .tooltip-arrow {
+   display: none;
+ }
+ 
 
  /* general components ends */
 
@@ -203,13 +213,13 @@ a.show-form, a.close-form {
 
 input.title-input {
   padding: 5px;
-  width: 300px;
+  width: 375px;
 }
 
 input.tag-input {
   margin: 10px 0 5px 5px;
   padding: 5px;
-  width: 400px;
+  width: 514px;
 }
 
 input.pano-item-save-button {
@@ -275,14 +285,6 @@ input.pano-item-save-button {
   -ms-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
-}
-
-.tooltip-inner {
-  background: $medium-dark-gray;
-}
-
-.tooltip-arrow {
-  display: none;
 }
 
 .gallery-form  {
@@ -469,6 +471,23 @@ input.pano-item-save-button {
     left: -20px;
     width: 900px;
     margin: 10px 0;
+    .pano-form {
+      color: white;
+      padding: 10px;
+
+      select {
+        margin: 5px;
+        width: 120px;
+      }
+
+      .title-input {
+        width: 230px;
+      }
+
+      .tag-input {
+        width: 450px;
+      }
+    }
   }
 }
 

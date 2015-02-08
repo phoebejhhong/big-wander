@@ -6,7 +6,8 @@
       <%= panoItem.escape("title") %>
     </div>
     <div class="pano-item-buttons">
-      <a href="<%= panoItem.getPanoramaViewUrl() %>">
+      <a href="<%= panoItem.getPanoramaViewUrl() %>" class="view-full-size"
+        data-toggle="tooltip" data-placement="left" title="View full size">
         <span class="glyphicon glyphicon-picture"></span>
       </a>
       <% if (BigWander.currentUser && BigWander.currentUserId === gallery.get("owner_id")) { %>
