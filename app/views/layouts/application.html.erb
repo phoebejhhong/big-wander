@@ -18,7 +18,30 @@
 <body>
 
 <%= render partial: "layouts/header" %>
-<%= yield %>
+<div class="wrapper">
+  <div class="main">
+    <%= yield %>
+  </div>
+</div>
 
+<script>$(BigWander.initialize);</script>
+<script>
+$(function() {
+  BigWander.currentUserId = <%= current_user.try(:id) || 0 %>
+  if (BigWander.currentUserId != 0) {
+    BigWander.currentUser = new BigWander.Models.User({
+      id: BigWander.currentUserId
+    });
+    BigWander.currentUser.fetch();
+  };
+  $(".search-form").on("submit", function(event) {
+    event.preventDefault();
+    $input = $(event.currentTarget).find(".search-query");
+    var query = $input.val();
+    $input.val("");
+    Backbone.history.navigate("/search/" + query, {trigger: true});
+  })
+})
+</script>
 </body>
 </html>

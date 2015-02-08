@@ -23,7 +23,7 @@ $(function () {
 
   $(document).on("click", "a[href^='/']", function(event) {
     var href = $(event.currentTarget).attr('href')
-    var passThrough = href.indexOf('sign_out') >= 0
+    var passThrough = href.indexOf('session') >= 0
 
     if (!passThrough && !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
       event.preventDefault();

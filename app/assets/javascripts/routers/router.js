@@ -3,6 +3,7 @@ BigWander.Routers.Router = Backbone.Router.extend({
     "": "root",
     "p/:lat/:lgn/:heading/:pitch": "streetViewPanoramaShow",
     "p/:lat/:lgn": "streetViewPanoramaShow",
+    "users/new": "",
     "users/:id": "userShow",
     "galleries/:id": "galleryShow",
     "search/:query": "searchQuery",

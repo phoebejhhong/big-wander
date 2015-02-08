@@ -89,6 +89,7 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
       });
     } else {
       // TODO: sign in required!
+      $("#login-modal").modal();
     };
   },
 
