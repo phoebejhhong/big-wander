@@ -67,7 +67,7 @@
  .tooltip-arrow {
    display: none;
  }
- 
+
 
  /* general components ends */
 
@@ -90,18 +90,6 @@
    text-decoration: none;
  }
 
- header h1 {
-   color: #fff;
-   margin: 0;
-   padding: 5px 5px 5px 20px;
-   font-size: 38px;
-   text-shadow: 1px 1px 2px $dark-gray;
- }
-
- header h1 a{
-   font-family: 'Patua One';
- }
-
  header .col-md-1, header .col-md-2, header .col-md-3  {
    height: 60px;
    padding: 5px;
@@ -109,6 +97,7 @@
 
 .header-title {
   background:  $color700;
+  padding: 0 !important;
 }
 
 .random-button, .sign-out, .my-gallery, .sign-up, .log-in {
@@ -491,24 +480,24 @@ input.pano-item-save-button {
   }
 }
 
-
-
 /* gallery show ends */
 
-
+/* search result starts */
 
 .medium-panorama {
-  width: 800px;
-  height: 400px;
+  width: 500px;
+  height: 250px;
 }
 
 .galleries-search-result {
   float: left;
   display: block;
-  width: 500px;
+  width: 640px;
 }
 
 .pano-items-search-result {
   float: left;
   display: block;
 }
+
+/* search result ends */

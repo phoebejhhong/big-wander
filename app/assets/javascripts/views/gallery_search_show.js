@@ -1,6 +1,6 @@
 BigWander.Views.GallerySearchShow = Backbone.CompositeView.extend({
   template: JST["gallery-search-show"],
-  className: "gallery-search-show",
+  className: "gallery-search-show gallery-index-item",
 
   events: {
   },
