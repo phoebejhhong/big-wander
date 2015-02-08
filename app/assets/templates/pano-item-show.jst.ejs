@@ -1,12 +1,28 @@
-<div class="medium-panorama">
-</div>
-Title: <%= panoItem.escape("title") %><br />
-<% if (panoItem.escape("all_tags")) {%>
-Tags: <%= panoItem.escape("all_tags") %>
-<% }; %>
-<a href="<%= panoItem.getPanoramaViewUrl() %>">>> View full-size</a>
-<% if (BigWander.currentUser && BigWander.currentUserId === gallery.get("owner_id")) { %>
-  <a href="javascript:void(0)" class="edit-pano-item">Edit</a> |
-  <a href="javascript:void(0)" class="delete-pano-item">Delete</a>
+<div class="pano-item-show-wrapper">
+  <div class="large-panorama">
+  </div>
+  <div class="pano-item-header clearfix">
+    <div class="pano-item-title">
+      <%= panoItem.escape("title") %>
+    </div>
+    <div class="pano-item-buttons">
+      <a href="<%= panoItem.getPanoramaViewUrl() %>">
+        <span class="glyphicon glyphicon-picture"></span>
+      </a>
+      <% if (BigWander.currentUser && BigWander.currentUserId === gallery.get("owner_id")) { %>
+        <a href="javascript:void(0)" class="edit-pano-item">
+          <span class="glyphicon glyphicon-edit"></span>
+        </a>
+        <a href="javascript:void(0)" class="delete-pano-item">
+          <span class="glyphicon glyphicon-trash"></span>
+        </a>
+      <% }%>
+    </div>
+  </div>
+  <% if (panoItem.escape("all_tags")) {%>
+    <div class="pano-item-tags">
+      <span>Tags: </span> <%= panoItem.escape("all_tags") %>
+    </div>
+  <% }; %>
   <div class="edit-pano-item-form-wrapper"></div>
-<% }%>
+</div>

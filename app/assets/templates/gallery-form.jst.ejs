@@ -1,3 +1,4 @@
+<% var title = (gallery.isNew() ? "New" : "Edit"); %>
 <% var titlePlaceholder = (gallery.isNew() ? "Gallery title" : ""); %>
 <% var titleValue = (gallery.isNew() ? "" : gallery.escape("title")); %>
 <% var descPlaceholder = (gallery.isNew() || !gallery.escape("description") ? "Add description if you'd like" : ""); %>
@@ -7,19 +8,19 @@
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h4 class="modal-title" id="myModalLabel">New Gallery</h4>
+      <h4 class="modal-title" id="myModalLabel"><%= title %> Gallery</h4>
     </div>
     <div class="modal-body">
-      <input type="text" name="title"
-      placeholder="<%= titlePlaceholder %>" class="title-input"
-      value="<%= titleValue %>" autofocus="true" />
-      <textarea name="description" class="desc-input"
-      placeholder="<%= descPlaceholder %>"><%= descValue %></textarea>
+      <div class="gallery-form-wrapper">
+        <input type="text" name="title"
+        placeholder="<%= titlePlaceholder %>" class="title-input"
+        value="<%= titleValue %>" autofocus="true" />
+        <textarea name="description" class="desc-input"
+        placeholder="<%= descPlaceholder %>"><%= descValue %></textarea>
+      </div>
     </div>
     <div class="modal-footer">
       <input type="submit" class="submit-button" value = "<%= buttonValue %>" />
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
       </button>
     </div>
   </div>

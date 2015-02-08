@@ -38,9 +38,11 @@ BigWander.Views.GalleryIndexItem = Backbone.CompositeView.extend({
     var view = new BigWander.Views.GalleryForm({
       model: this.model,
       collection: this.model.collection,
+      superView: this,
     });
 
-    this.addSubview(".edit-gallery-form-wrapper", view);
+    this.$(".gallery-form-modal").html(view.render().$el);
+    this.$(".edit-gallery-modal").modal();
   },
 
   deleteGallery: function () {

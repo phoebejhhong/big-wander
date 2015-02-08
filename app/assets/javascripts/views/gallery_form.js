@@ -4,6 +4,7 @@ BigWander.Views.GalleryForm = Backbone.CompositeView.extend({
   tagName: "form",
 
   initialize: function (options) {
+    this.superView = options.superView;
   },
 
   events: {
@@ -29,7 +30,12 @@ BigWander.Views.GalleryForm = Backbone.CompositeView.extend({
       success: function () {
         that.collection.add(that.model, {merge: true});
         BigWander.currentUser.galleries().add(that.model, {merge: true});
-        $("#new-gallery-modal").modal('hide');
+        if (that.superView) {
+          that.superView.$(".edit-gallery-modal").modal('hide');
+          $("body").removeClass("modal-open")
+        } else {
+          $("#new-gallery-modal").modal('hide');
+        }
         that.remove();
       },
       error: function () {

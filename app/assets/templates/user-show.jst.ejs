@@ -2,7 +2,7 @@
   <div class="user-show-header-wrapper clearfix">
     <h3 class="user-show-title"><%= user.escape("username") %> 's Galleries</h3>
     <% if (BigWander.currentUser && BigWander.currentUser.id === user.id) { %>
-      <button class="new-gallery">
+      <button class="new-gallery" data-toggle="tooltip" data-placement="right" title="New Gallery">
         <span class="glyphicon glyphicon-plus"></span>
       </button>
       <div class="modal fade gallery-form-modal" id="new-gallery-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
