@@ -17,6 +17,8 @@
 <% }; %>
 <ul class="pano-items-index">
 </ul>
-<div class="view-all-wrapper">
-  <a href="<%= '/galleries/' + gallery.id %>">View all</a>
-</div>
+<% if (gallery.panoItems().length > 2) { %>
+  <div class="view-all-wrapper">
+    <a href="<%= '/galleries/' + gallery.id %>">View all</a>
+  </div>
+<% }; %>

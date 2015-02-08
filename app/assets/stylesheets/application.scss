@@ -32,6 +32,10 @@
    background: #f9f9f9;
  }
 
+ input:focus, button:focus {
+   outline: 0px;
+ }
+
  /* header starts */
  header {
    height: 100px;
@@ -206,6 +210,11 @@ input.pano-item-save-button {
   border-radius: 50%;
   background: #121212;
   color: #fff;
+  text-align: center;
+  span {
+    line-height: 38px;
+    top: 0px;
+  }
 }
 
 .new-gallery-form-wrapper {
