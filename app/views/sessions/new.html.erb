@@ -12,13 +12,20 @@
     <form action="/session" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <label>Username<br>
-        <input name="user[username]" type="text"><br>
+        <input name="user[username]" type="text" class="input-username"><br>
       </label><br>
       <label>Password<br>
-        <input name="user[password]" type="password"><br>
+        <input name="user[password]" type="password" class="input-password"><br>
       </label><br>
       <input type="submit" value="Submit" class="btn btn-primary"><br>
-      <input type="submit" value="Demo User Log In" class="btn btn-primary"><br>
+      <input type="submit" value="Demo User Log In" class="btn btn-primary demo-user"><br>
     </form>
   </div>
 </div>
+<script type="text/javascript">
+  $(".demo-user").on("click", function (event) {
+    event.preventDefault();
+    $(".input-username").val("bigWanderer");
+    $(".input-password").val("iamawanderer");
+  })
+</script>

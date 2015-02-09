@@ -18,6 +18,7 @@ BigWander.saveRandomPanorama = function (lat, lng) {
         lat: lat,
         lng: lng
       });
+      BigWander.saveRandomPanorama(BigWander.createRandomLat(), BigWander.createRandomLng());
     } else {
       BigWander.saveRandomPanorama(BigWander.createRandomLat(), BigWander.createRandomLng());
     };
