@@ -37,12 +37,21 @@ BigWander.Views.PanoForm = Backbone.CompositeView.extend({
         if (currentGallery && that.model.get("gallery_id") !== currentGallery) {
           that.collection.remove(that.model);
         };
-        new BigWander.Models.panorama.
+
         if (that.superView.closeSavePanoForm) {
           that.superView.closeSavePanoForm();
         } else {
           that.superView.closeEditPanoForm();
-        }
+        };
+        var panorama = new BigWander.Models.Panorama(that.values);
+        panorama.save({}, {
+          success: function () {
+            console.log("suc");
+          },
+          error: function () {
+            console.log("err");
+          }
+        });
       },
       error: function () {
         that.$(".title-input").addClass("input-error");

@@ -15,6 +15,13 @@ BigWander.Routers.Router = Backbone.Router.extend({
   },
 
   root: function () {
+    // TODO: shouldn't fetch here...
+    BigWander.panoramas.fetch({
+      success: function () {
+        Backbone.history.navigate("/random", {trigger: true});
+      }
+    });
+
   },
 
   randomPanorama: function () {

@@ -47,8 +47,6 @@ BigWander.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   renderNewGalleryForm: function () {
-    // TODO: rendering should only happen once
-    // this.$(".new-gallery").prop("disabled", "true");
     var view = new BigWander.Views.GalleryForm({
       model: new BigWander.Models.Gallery(),
       collection: this.collection,

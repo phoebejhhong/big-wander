@@ -6,7 +6,7 @@ class Gallery < ActiveRecord::Base
 
   def self.search(query)
     if query
-      Gallery.where("title LIKE ?", "%#{query}%")
+      Gallery.where("LOWER(title) LIKE ?", "%#{query.downcase}%")
     else
       Gallery.all
     end

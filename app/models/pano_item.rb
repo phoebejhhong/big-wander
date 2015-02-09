@@ -7,7 +7,7 @@ class PanoItem < ActiveRecord::Base
 
   def self.search(query)
     if query
-      tags = Tag.where("label LIKE ?", "%#{query}%")
+      tags = Tag.where("LOWER(label) LIKE ?", "%#{query.downcase}%")
       PanoItem.includes(:taggings).where(taggings: {tag_id: tags})
     else
       PanoItem.all

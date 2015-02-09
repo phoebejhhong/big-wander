@@ -34,7 +34,6 @@ BigWander.Views.GalleryIndexItem = Backbone.CompositeView.extend({
   },
 
   renderEditGalleryForm: function () {
-    // TODO: this can be a modal
     var view = new BigWander.Views.GalleryForm({
       model: this.model,
       collection: this.model.collection,
