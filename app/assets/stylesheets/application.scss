@@ -200,8 +200,7 @@
 
 .hidden-menu {
   width: 0%;
-  float:left;
-  a, span {
+  a, span, input, select {
     opacity: 0;
   }
 }
