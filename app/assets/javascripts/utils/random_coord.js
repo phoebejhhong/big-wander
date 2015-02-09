@@ -7,16 +7,19 @@ BigWander.createRandomLng = function () {
   return BigWander.createRandomLat() * 2;
 };
 
-BigWander.goToRandomPanorama = function (lat, lng) {
+BigWander.saveRandomPanorama = function (lat, lng) {
   var loc = new google.maps.LatLng(lat, lng);
   var sv = new google.maps.StreetViewService();
   sv.getPanoramaByLocation(loc, 50, function (data, status) {
     if (status === google.maps.StreetViewStatus.OK) {
-      console.log("p/" + lat +"/" + lng);
-      Backbone.history.navigate("p/" + lat +"/" + lng, {trigger: true});
+      console.log("saved " + lat +", " + lng);
+      p = new BigWander.Models.Panorama
+      p.save({
+        lat: lat,
+        lng: lng
+      });
     } else {
-      console.log("fail");
-      BigWander.goToRandomPanorama(BigWander.createRandomLat(), BigWander.createRandomLng());
+      BigWander.saveRandomPanorama(BigWander.createRandomLat(), BigWander.createRandomLng());
     };
   });
 };

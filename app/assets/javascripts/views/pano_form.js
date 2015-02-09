@@ -37,6 +37,7 @@ BigWander.Views.PanoForm = Backbone.CompositeView.extend({
         if (currentGallery && that.model.get("gallery_id") !== currentGallery) {
           that.collection.remove(that.model);
         };
+        new BigWander.Models.panorama.
         if (that.superView.closeSavePanoForm) {
           that.superView.closeSavePanoForm();
         } else {

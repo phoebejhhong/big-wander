@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   namespace :api, defaults: { format: :json } do
-    resources :panoramas, only: [:show, :index]
+    resources :panoramas, only: [:show, :index, :create]
     resources :users, only: [:show]
     resources :galleries, only: [:index, :create, :destroy, :show, :update]
     resources :pano_items, only: [:index, :create, :destroy, :update]

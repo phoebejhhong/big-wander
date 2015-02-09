@@ -1,6 +1,7 @@
 BigWander.Routers.Router = Backbone.Router.extend({
   routes: {
     "": "root",
+    "random": "randomPanorama",
     "p/:lat/:lgn/:heading/:pitch": "streetViewPanoramaShow",
     "p/:lat/:lgn": "streetViewPanoramaShow",
     "users/new": "",
@@ -14,9 +15,6 @@ BigWander.Routers.Router = Backbone.Router.extend({
   },
 
   root: function () {
-    BigWander.panoramas.fetch({
-      success: this.randomPanorama
-    });
   },
 
   randomPanorama: function () {
