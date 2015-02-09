@@ -163,7 +163,20 @@
   }
 }
 
-.menu-hide {
+.menu-to-hide {
+  -webkit-transition:all 0.5s ease-in-out;
+  -moz-transition:all 0.5s ease-in-out;
+  -o-transition:all 0.5s ease-in-out;
+  transition:all 0.5s ease-in-out;
+}
+
+.menu-to-hide:not(.hidden-menu) {
+  a, span:not(.glyphicon-play) {
+    transition-delay: 0.5s;
+  }
+}
+
+.menu-toggle {
   width: auto;
   background: $light-gray;
   vertical-align: middle;
@@ -181,10 +194,17 @@
 
   span:last-child {
     position: relative;
-    left: -5px;  }
+    left: -5px;
+  }
 }
 
-
+.hidden-menu {
+  width: 0%;
+  float:left;
+  a, span {
+    opacity: 0;
+  }
+}
 
 .search-form-wrapper {
   position: absolute;

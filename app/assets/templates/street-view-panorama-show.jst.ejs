@@ -15,9 +15,12 @@
     </div>
   </div>
 </div>
-<div class="information col-md-5">
+  <div class="information col-md-5 menu-to-hide
+  <% if (BigWander.menuClose) { %>
+    hidden-menu
+  <% } %>">
     <span class="address">You are now in </span>
     <a href="javascript:void(0)" class="show-form">Save this view</a>
     <div class="save-pano-form-wrapper"></div>
   </div>
-<div id="full-panorama"></div>
+  <div id="full-panorama"></div>

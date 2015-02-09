@@ -33,13 +33,8 @@ $(function() {
     });
     BigWander.currentUser.fetch();
   };
-  $(".search-form").on("submit", function(event) {
-    event.preventDefault();
-    $input = $(event.currentTarget).find(".search-query");
-    var query = $input.val();
-    $input.val("");
-    Backbone.history.navigate("/search/" + query, {trigger: true});
-  })
+  BigWander.searchHandeler();
+  BigWander.slideMenu();
 })
 </script>
 </body>

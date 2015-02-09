@@ -16,6 +16,32 @@ window.BigWander = {
   }
 };
 
+BigWander.searchHandeler = function () {
+  $(".search-form").on("submit", function(event) {
+    event.preventDefault();
+    $input = $(event.currentTarget).find(".search-query");
+    var query = $input.val();
+    $input.val("");
+    Backbone.history.navigate("/search/" + query, {trigger: true});
+  });
+};
+
+BigWander.slideMenu = function () {
+  $(".menu-toggle").on("click", function (event) {
+    if (BigWander.menuClose) {
+      BigWander.menuClose = false;
+      $(".menu-to-hide").removeClass("hidden-menu");
+      var arrows = $(".glyphicon-chevron-right").removeClass("glyphicon-chevron-right");
+      arrows.addClass("glyphicon-chevron-left");
+    } else {
+      BigWander.menuClose = true;
+      $(".menu-to-hide").addClass("hidden-menu").html;
+      var arrows = $(".glyphicon-chevron-left").removeClass("glyphicon-chevron-left");
+      arrows.addClass("glyphicon-chevron-right");
+    }
+  });
+};
+
 $(function () {
   if (window.location.hash.indexOf('!') > -1) {
     return BigWander.redirectHashBang();
