@@ -7,10 +7,12 @@ BigWander.Views.PanoForm = Backbone.CompositeView.extend({
     this.collection = this.model.collection;
     this.values = options.values;
     this.superView = options.superView;
+    this.listenTo(BigWander.currentUser.galleries(), "add", this.render);
   },
 
   events: {
     "submit": "savePanorama",
+    "change .choose-gallery": "renderGalleryForm",
   },
 
   render: function () {
@@ -20,6 +22,18 @@ BigWander.Views.PanoForm = Backbone.CompositeView.extend({
     this.$el.html(content);
 
     return this;
+  },
+
+  renderGalleryForm: function (event) {
+    if ($(event.currentTarget).find("option:selected").val() === "new") {
+      var view = new BigWander.Views.GalleryForm({
+        model: new BigWander.Models.Gallery(),
+        collection: BigWander.currentUser.galleries(),
+      });
+      $(".gallery-form-modal").html(view.render().$el);
+
+      $("#new-gallery-modal").modal();
+    };
   },
 
   savePanorama: function (event) {
