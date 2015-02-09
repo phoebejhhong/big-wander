@@ -16,7 +16,13 @@ window.BigWander = {
   }
 };
 
-BigWander.searchHandeler = function () {
+BigWander.aboutHandler = function () {
+  $(".about").on("click", function () {
+    $("#about-modal").modal();
+  })
+},
+
+BigWander.searchHandler = function () {
   $(".search-form").on("submit", function(event) {
     event.preventDefault();
     $input = $(event.currentTarget).find(".search-query");
