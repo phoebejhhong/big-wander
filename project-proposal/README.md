@@ -52,6 +52,8 @@ I'll need a `search` route that accepts a query in the params. The controller ac
 [Details][phase-four]
 
 ### Bonus Features (TBD)
+- [ ] Lading page
+- [ ] Share buttons
 - [ ] Vote button and counter for `PanoItemShow` view
 - [ ] TagShow view
 - [ ] Pagination of the `UserShow`, `GalleryShow`, and `SearchShow` views
