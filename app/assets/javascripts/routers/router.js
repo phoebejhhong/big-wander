@@ -15,7 +15,6 @@ BigWander.Routers.Router = Backbone.Router.extend({
   },
 
   root: function () {
-    // TODO: shouldn't fetch here...
     var view = new BigWander.Views.Root();
 
     this._swapView(view);
@@ -49,7 +48,7 @@ BigWander.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(view);
-    google.maps.event.trigger(view.panorama, 'resize')
+    google.maps.event.trigger(view.panorama, 'resize');
     var currCenter = view.map.getCenter();
     google.maps.event.trigger(view.map, 'resize');
     view.map.setCenter(currCenter);

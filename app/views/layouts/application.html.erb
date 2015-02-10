@@ -2,7 +2,9 @@
 <html>
 <head>
   <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <title>BigWander</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <title>BigWander</title>
+  <%= favicon_link_tag 'favicon.ico' %>
   <% if Rails.env.production? %>
     <% api_key = "key=AIzaSyAi_Egh41E4EB_gg6QWrg_Ik1bC16nP5Es" %>
   <% else %>
