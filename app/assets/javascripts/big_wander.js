@@ -16,7 +16,8 @@ window.BigWander = {
   }
 };
 
-BigWander.aboutHandler = function () {
+BigWander.headerHandler = function () {
+  // about modal
   $(".about").on("click", function () {
     $("#about-modal").modal();
   })

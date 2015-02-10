@@ -46,6 +46,9 @@ BigWander.Routers.Router = Backbone.Router.extend({
 
     this._swapView(view);
     google.maps.event.trigger(view.panorama, 'resize')
+    var currCenter = view.map.getCenter();
+    google.maps.event.trigger(view.map, 'resize');
+    view.map.setCenter(currCenter);
   },
 
   userShow: function (id) {

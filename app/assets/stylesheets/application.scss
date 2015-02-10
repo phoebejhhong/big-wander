@@ -114,40 +114,69 @@
 
 .random-button {
   width: 150px;
+  height: 60px;
   font-size: 18px;
-  -webkit-transition:all 0.5s ease-in-out;
-  -moz-transition:all 0.5s ease-in-out;
-  -o-transition:all 0.5s ease-in-out;
-  transition:all 0.5s ease-in-out;
+  overflow: hidden;
+  padding: 0 !important;
 }
 
-.random-button a:after {
-  width: 0%;
-  height: 100%;
+.random-button a {
+  display: block;
+  width: 150px;
+  height: 60px;
+  line-height: 60px;
+  // overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  span {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all 0.3s;
+    -webkit-backface-visibility: hidden;
+    -moz-transition: all 0.3s;
+    -moz-backface-visibility: hidden;
+    transition: all 0.3s;
+    backface-visibility: hidden;
+  }
+}
+
+
+.random-button a:before {
+  font-size: 14px;
+  content: 'random street view';
+  background: #fff;
+  color: $color400;
+
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  content: '';
+  width: 100%;
+  height: 100%;
+  left: -100%;
+  top:0;
+  text-align: center;
   vertical-align: middle;
   line-height: 60px;
   -webkit-transition:all 0.5s ease-in-out;
   -moz-transition:all 0.5s ease-in-out;
   -o-transition:all 0.5s ease-in-out;
   transition:all 0.5s ease-in-out;
-
-  background: #fff;
-  a {
-    color: $color400;
-  }
-}
-.random-button:hover a{
-  color: $color400;
 }
 
-.random-button:hover a:after {
-  width: 100%;
-  content: 'random!';
+.random-button a:active:before {
+  color: red;
+}
+
+.random-button:hover span {
+  transition-delay: 0s !important;
+  -webkit-transform: translateX(200%);
+  -moz-transform: translateX(200%);
+  -ms-transform: translateX(200%);
+  transform: translateX(200%);
+}
+
+.random-button:hover a:before {
+  left: 0;
 }
 
 .featured-and-about-wrapper {
@@ -171,7 +200,7 @@
 }
 
 .menu-to-hide:not(.hidden-menu) {
-  a, span:not(.glyphicon-play) {
+  a, span:not(.go-random-link) {
     transition-delay: 0.5s;
   }
 }
@@ -199,8 +228,7 @@
 }
 
 .hidden-menu {
-  width: 0%;
-  height: 32px;
+  width: 0;
   a, span, input, select {
     opacity: 0;
     width: 100%;
@@ -208,7 +236,6 @@
     left: -100px;
   }
 }
-
 .search-form-wrapper {
   position: absolute;
   right: 0;
@@ -251,6 +278,7 @@
 }
 
 .information {
+  width: 600px;
   position: fixed;
   color: white;
   font-size: 16px;
@@ -260,6 +288,27 @@
   background: $color200;
   opacity: 0.8;
   filter: alpha(opacity=80);
+}
+
+.hidden-menu {
+  width: 0;
+
+  a, span, input, select {
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    left: -100px;
+  }
+
+  span.address {
+    height: 32px;
+  }
+
+  .world-map-view {
+    opacity: 0;
+    position: absolute;
+    left: -600px;
+  }
 }
 
 .address {
@@ -308,12 +357,23 @@ input.tag-input {
 input.pano-item-save-button {
   position: absolute;
   padding: 5px;
-  background-color: $color700;
+  background: $color700;
   right: 0px;
   bottom: 0px;
   color: #fff;
 }
 
+.world-map-view {
+  float: left;
+  background:$color700;
+  height: 200px;
+  width: 600px;
+  -webkit-transition:all 0.5s ease-in-out;
+  -moz-transition:all 0.5s ease-in-out;
+  -o-transition:all 0.5s ease-in-out;
+  transition:all 0.5s ease-in-out;
+  transition-delay: 2s;
+}
 /* street view panorama show ends */
 
 /* modal starts */

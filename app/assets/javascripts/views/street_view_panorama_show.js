@@ -18,12 +18,36 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template();
     this.$el.html(content);
+    this.renderStreetView();
     this.renderMap();
     this.renderAddress();
     return this;
   },
 
-  renderMap: function () {
+  renderMap : function () {
+    var mapOptions = {
+      center: this.loc,
+      zoom: 3,
+      mapTypeControl: false,
+      scaleControl: false,
+      streetViewControl: false,
+      zoomControl: false,
+    };
+
+    this.map = new google.maps.Map(
+      this.$(".world-map-view")[0],mapOptions
+      );
+
+    this.marker = new google.maps.Marker({
+      position: this.loc,
+      map: this.map,
+      title: "Current Location",
+    });
+
+    this.marker.setMap(this.map);
+  },
+
+  renderStreetView: function () {
     //setting up
     var panoramaOptions = {
       position: this.loc,
