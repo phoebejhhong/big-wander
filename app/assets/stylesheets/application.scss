@@ -359,7 +359,7 @@ input.pano-item-save-button {
   padding: 5px;
   background: $color700;
   right: 0px;
-  bottom: 0px;
+  bottom: 200px;
   color: #fff;
 }
 
@@ -372,7 +372,6 @@ input.pano-item-save-button {
   -moz-transition:all 0.5s ease-in-out;
   -o-transition:all 0.5s ease-in-out;
   transition:all 0.5s ease-in-out;
-  transition-delay: 2s;
 }
 /* street view panorama show ends */
 
