@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
 
   has_many :galleries, foreign_key: "owner_id", dependent: :destroy
+  has_many :votes, foreign_key: "voter_id", dependent: :destroy
 
   attr_reader :password
   after_initialize :ensure_session_token

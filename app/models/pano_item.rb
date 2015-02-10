@@ -2,8 +2,10 @@ class PanoItem < ActiveRecord::Base
   validates :title, :gallery_id, :lat, :lng, :heading, :pitch, presence: true
 
   belongs_to :gallery
+  delegate :owner, to: :gallery
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+  has_many :votes, dependent: :destroy
 
   def self.search(query)
     tags = Tag.where("LOWER(label) LIKE ?", "%#{query.downcase}%")
@@ -11,7 +13,7 @@ class PanoItem < ActiveRecord::Base
   end
 
   def self.popular(num)
-    PanoItem.order(votes: :desc).limit(num)
+    PanoItem.order(votes_count: :desc).limit(num)
   end
 
   def all_tags

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210015921) do
+ActiveRecord::Schema.define(version: 20150210224250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,15 +27,15 @@ ActiveRecord::Schema.define(version: 20150210015921) do
   add_index "galleries", ["owner_id"], name: "index_galleries_on_owner_id", using: :btree
 
   create_table "pano_items", force: true do |t|
-    t.integer  "gallery_id",                                     null: false
-    t.string   "title",                                          null: false
-    t.decimal  "lat",        precision: 9, scale: 6,             null: false
-    t.decimal  "lng",        precision: 9, scale: 6,             null: false
-    t.decimal  "heading",    precision: 6, scale: 3,             null: false
-    t.decimal  "pitch",      precision: 6, scale: 3,             null: false
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-    t.integer  "votes",                              default: 0, null: false
+    t.integer  "gallery_id",                          null: false
+    t.string   "title",                               null: false
+    t.decimal  "lat",         precision: 9, scale: 6, null: false
+    t.decimal  "lng",         precision: 9, scale: 6, null: false
+    t.decimal  "heading",     precision: 6, scale: 3, null: false
+    t.decimal  "pitch",       precision: 6, scale: 3, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "votes_count"
   end
 
   add_index "pano_items", ["gallery_id"], name: "index_pano_items_on_gallery_id", using: :btree
@@ -73,5 +73,16 @@ ActiveRecord::Schema.define(version: 20150210015921) do
 
   add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", using: :btree
+
+  create_table "votes", force: true do |t|
+    t.integer  "pano_item_id", null: false
+    t.integer  "voter_id",     null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "votes", ["pano_item_id", "voter_id"], name: "index_votes_on_pano_item_id_and_voter_id", unique: true, using: :btree
+  add_index "votes", ["pano_item_id"], name: "index_votes_on_pano_item_id", using: :btree
+  add_index "votes", ["voter_id"], name: "index_votes_on_voter_id", using: :btree
 
 end
