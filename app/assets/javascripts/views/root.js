@@ -20,7 +20,10 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
     var content = this.template();
     this.$el.html(content);
     this.collection.fetch({
-      success: that.renderPanoItems.bind(this),
+      success: function () {
+        that.selectedItem = that.collection.first();
+        that.renderPanoItems();
+      },
     });
 
     return this;
@@ -28,8 +31,7 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
 
   renderPanoItems: function () {
     this.collection.each(this.addPanoItem.bind(this));
-    // set initial values
-    this.setValues(this.collection.first());
+    this.setValues(this.selectedItem);
   },
 
   addPanoItem: function (panoItem) {
@@ -37,10 +39,16 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
       model: panoItem,
     });
 
-    this.addSubview(".pano-items-index", view);
+    this.addSubview(".root-pano-items-index", view);
   },
 
   setValues: function (panoItem) {
+    if (this.selectedDiv) {
+      this.selectedDiv.find("img").removeClass("selected");
+    };
+    this.selectedDiv = this.$("a[data-id='" + this.selectedItem.id + "']");
+    this.selectedDiv.find("img").addClass("selected");
+
     this.lat = Number(panoItem.get("lat"));
     this.lng = Number(panoItem.get("lng"));
     this.heading = Number(panoItem.get("heading"));
@@ -53,9 +61,10 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
   },
 
   getNewValues: function (event) {
+    // $(event.currentTarget).find("img").addClass("selected");
     var panoId = $(event.currentTarget).data("id");
-    var panoItem = this.collection.get(panoId);
-    this.setValues(panoItem);
+    this.selectedItem = this.collection.get(panoId);
+    this.setValues(this.selectedItem);
   },
 
   renderMap : function () {
@@ -68,7 +77,7 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
       zoomControl: false,
     };
 
-    window.map = this.map = new google.maps.Map(
+    BigWander.map = this.map = new google.maps.Map(
       this.$(".world-map-view")[0], mapOptions
       );
 
@@ -98,7 +107,7 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
       },
     };
     this.panorama = new google.maps.StreetViewPanorama(
-      this.$("#half-full-panorama")[0], panoramaOptions
+      this.$("#full-panorama")[0], panoramaOptions
       );
   },
 
@@ -148,9 +157,4 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
     this.removeSubview(".save-pano-form-wrapper", subview);
     this.$(".close-form").removeClass("close-form").addClass("show-form").html("Save this view");
   },
-
-  resizeMap: function () {
-    alert("yesss");
-  },
-
 })

@@ -1,7 +1,8 @@
-<div class="pano-index-item-title">
-  <%= panoItem.escape("title") %>
-</div>
+
 <a href="javascipt:void(0)" class="root-pano-item-anchor"
   data-id="<%= panoItem.id %>">
+  <div class="pano-index-item-title">
+    <%= panoItem.escape("title") %>
+  </div>
   <img src="<%= panoItem.getSmallImageUrl() %>" />
 </a>

@@ -39,6 +39,7 @@ BigWander.Views.PanoItemSearchShow = Backbone.CompositeView.extend({
       },
       visible: true,
       addressControl: false,
+      scrollwheel: false,
       zoomControlOptions: {
         position: google.maps.ControlPosition.RIGHT_CENTER,
       },

@@ -34,6 +34,9 @@
    padding: 0;
    font-family: 'Roboto', verdana;
    text-decoration: none;
+   box-sizing:border-box;
+   -moz-box-sizing:border-box;
+   -webkit-box-sizing:border-box;
  }
 
  html, body {
@@ -232,6 +235,12 @@
   }
 }
 
+.aboutLogo {
+  background: url(asset-path("logo-black.png"));
+  width: 300px;
+  height:60px;
+}
+
 .menu-to-hide {
   -webkit-transition:all 0.5s ease-in-out;
   -moz-transition:all 0.5s ease-in-out;
@@ -315,28 +324,66 @@
   display: block;
 }
 
-#half-full-panorama{
-  position: fixed !important;
-  width: 60%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  z-index: 1;
-}
-
 .root-gallery {
   background: #fff;
-  width: 40%;
+  width: 450px;
   height: 100%;
   float: left;
   position: fixed;
-  left: 60%;
+  right: 0;
   overflow: hidden;
   box-shadow: 1px 1px 10px rgba(0,0,0,.6);
   z-index: 3;
+
+  h2 {
+    margin: 35px 0px 0 15px;
+    width: 150px;
+    border-left: 5px solid #121212;
+    padding-left: 15px;
+  }
+  a {
+    color: #fff;
+    height: 280px;
+  }
+  .root-pano-items-index {
+    margin-top: 10px;
+    padding: 15px 0;
+  }
+
+  .root-pano-index-item {
+    margin: 10px 0 10px 15px;
+    width: 420px;
+    height: 280px;
+  }
+  .pano-index-item-title {
+    width: 380px;
+    top: 15px;
+    font-size: 24px;
+  }
+
+  img {
+    position: relative;
+    top: -33px;
+    -webkit-transition:all 0.2s ease-in-out;
+    -moz-transition:all 0.2s ease-in-out;
+    -o-transition:all 0.2s ease-in-out;
+    transition:all 0.2s ease-in-out;
+  }
+
+  img:hover {
+    opacity: 0.6;
+  }
+
+  .selected {
+    filter: brightness(70%);
+    -webkit-filter: brightness(70%);
+    -moz-filter: brightness(70%);
+    -o-filter: brightness(70%);
+    -ms-filter: brightness(70%);
+  }
 }
 
-.root-gallery {
+.root-gallery:hover, .root-gallery:focus {
   overflow: auto;
 }
 
