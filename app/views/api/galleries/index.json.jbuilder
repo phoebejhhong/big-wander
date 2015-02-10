@@ -5,7 +5,7 @@ json.array! @galleries.each do |gallery|
   # (but get three items to check if it has more than 2 items)
   json.pano_items gallery.pano_items[0..2] do |pano_item|
     json.extract! pano_item, :id, :title, :lat, :lng,
-    :heading, :pitch,:all_tags, :created_at, :updated_at
+    :heading, :pitch, :all_tags, :created_at, :updated_at
   end
   json.owner do
     json.extract! gallery.owner, :id, :username

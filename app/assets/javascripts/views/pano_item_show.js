@@ -6,6 +6,7 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
     "click .delete-pano-item": "deletePanoItem",
     "click .edit-pano-item": "renderEditPanoForm",
     "click .close-pano-form": "closeEditPanoForm",
+    "click .vote-pano-item": "votePanoItem",
   },
 
   initialize: function (options) {
@@ -71,6 +72,21 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
 
   deletePanoItem: function () {
     this.model.destroy();
+  },
+
+  votePanoItem: function () {
+    if (BigWander.currentUser) {
+      var vote = new BigWander.Models.Vote({
+        voter_id: BigWander.currentUserId,
+        pano_item_id: this.model.id
+      });
+      vote.save({}, {
+        // do something
+      })
+    } else {
+      // TODO: sign in to vote!
+    }
+
   },
 
 })

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :pano_items, only: [:index, :create, :destroy, :update]
     resources :tags, only: [:create, :destroy]
     resources :searches, only: [:show]
+    resources :votes, only: [:create, :destroy]
   end
 
   get '(*url)' => 'static_pages#root', :constraints => XHRConstraint.new
