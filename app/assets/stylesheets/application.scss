@@ -265,6 +265,50 @@
    min-height: 100%;
  }
 
+ /* root page */
+
+.root {
+  height: 100%;
+  position: relative;
+}
+
+.root:before {
+  content: '';
+  height: 100%;
+  float: left;
+}
+
+.root:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+
+#half-full-panorama{
+  position: fixed !important;
+  width: 60%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.root-gallery {
+  background: #fff;
+  width: 40%;
+  height: 100%;
+  float: left;
+  position: fixed;
+  left: 60%;
+  overflow: hidden;
+}
+
+.root-gallery {
+  overflow: auto;
+}
+
+ /* root page */
+
 
 /* street view panorama show starts */
 
@@ -373,6 +417,7 @@ input.pano-item-save-button {
   -o-transition:all 0.5s ease-in-out;
   transition:all 0.5s ease-in-out;
 }
+
 /* street view panorama show ends */
 
 /* modal starts */

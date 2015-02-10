@@ -16,23 +16,27 @@ BigWander.Routers.Router = Backbone.Router.extend({
 
   root: function () {
     // TODO: shouldn't fetch here...
-    BigWander.panoramas.fetch({
-      success: function () {
-        Backbone.history.navigate("/random", {trigger: true});
-      }
-    });
+    var view = new BigWander.Views.Root();
 
+    this._swapView(view);
   },
 
   randomPanorama: function () {
-    // old slow pure way of picking random coordiates used to be like...
-    // BigWander.goToRandomPanorama(BigWander.createRandomLat(), BigWander.createRandomLng());
+    if (BigWander.panoramas.length === 0) {
+      var that = this;
+      BigWander.panoramas.fetch({
+        success: that.redirectToRandomPanorama
+      })
+    } else {
+      this.redirectToRandomPanorama();
+    };
+  },
 
-    // instead I decided to keep database
+  redirectToRandomPanorama: function () {
     var random_idx = Math.floor(Math.random() * BigWander.panoramas.length);
     var panorama = BigWander.panoramas.models[random_idx];
     var url = "p/" + panorama.get("lat") +"/" + panorama.get("lng") +
-      "/" + panorama.get("heading") +"/" + panorama.get("pitch")
+    "/" + panorama.get("heading") +"/" + panorama.get("pitch")
     Backbone.history.navigate(url, {trigger: true});
   },
 
