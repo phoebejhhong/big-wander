@@ -1,7 +1,13 @@
 class Api::PanoItemsController < ApplicationController
 
   def index
-    @pano_items = PanoItem.search(params[:query])
+    if params[:query]
+      @pano_items = PanoItem.search(params[:query])
+    elsif params[:popular]
+      @pano_items = PanoItem.popular(params[:popular])
+    else
+      @pano_items = PanoItem.all
+    end
     render :index
   end
 

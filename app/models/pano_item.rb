@@ -6,12 +6,12 @@ class PanoItem < ActiveRecord::Base
   has_many :tags, through: :taggings
 
   def self.search(query)
-    if query
-      tags = Tag.where("LOWER(label) LIKE ?", "%#{query.downcase}%")
-      PanoItem.includes(:taggings).where(taggings: {tag_id: tags})
-    else
-      PanoItem.all
-    end
+    tags = Tag.where("LOWER(label) LIKE ?", "%#{query.downcase}%")
+    PanoItem.includes(:taggings).where(taggings: {tag_id: tags})
+  end
+
+  def self.popular(num)
+    PanoItem.order(votes: :desc).limit(num)
   end
 
   def all_tags

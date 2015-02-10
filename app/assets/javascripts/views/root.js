@@ -2,30 +2,56 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
   template: JST["root"],
   className: "root",
 
-  LIST: [
-  [],
-  [],
-  ],
-
   events: {
+    "click .root-pano-item-anchor": "renderMap",
     "click .show-form": "renderSavePanoForm",
     "click .close-form": "closeSavePanoForm",
   },
 
   initialize: function (options) {
-
+    this.collection = new BigWander.Collections.PopularPanoItems([], {
+      num: 5,
+    })
   },
 
   render: function () {
+    var that = this;
+
     var content = this.template();
     this.$el.html(content);
-    // this.renderStreetView();
-    // this.renderMap();
-    // this.renderAddress();
+    this.collection.fetch({
+      success: that.renderPanoItems.bind(this),
+    });
+
     return this;
   },
 
-  renderMap : function () {
+  renderPanoItems: function () {
+    this.collection.each(this.addPanoItem.bind(this));
+  },
+
+  addPanoItem: function (panoItem) {
+    if (this.findSubview(panoItem, ".pano-items-index")) {
+      this.removePanoItem(panoItem);
+    };
+
+    var view = new BigWander.Views.RootPanoIndexItem({
+      model: panoItem,
+    });
+
+    this.addSubview(".pano-items-index", view);
+  },
+
+  renderMap : function (event) {
+    var panoId = $(event.currentTarget).data("id");
+    var panoItem = this.collection.get(panoId);
+
+    this.lat = Number(panoItem.get("lat"));
+    this.lng = Number(panoItem.get("lng"));
+    this.heading = Number(panoItem.get("heading"));
+    this.pitch = Number(panoItem.get("pitch"));
+    this.loc = new google.maps.LatLng(this.lat,this.lng);
+
     var mapOptions = {
       center: this.loc,
       zoom: 3,
@@ -36,7 +62,7 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
     };
 
     this.map = new google.maps.Map(
-      this.$(".world-map-view")[0],mapOptions
+      this.$(".world-map-view")[0], mapOptions
       );
 
     this.marker = new google.maps.Marker({
@@ -46,6 +72,8 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
     });
 
     this.marker.setMap(this.map);
+    this.renderStreetView();
+    this.renderAddress();
   },
 
   renderStreetView: function () {

@@ -407,6 +407,7 @@ input.pano-item-save-button {
   color: #fff;
 }
 
+
 .world-map-view {
   float: left;
   background:$color700;
@@ -675,6 +676,11 @@ input.pano-item-save-button {
   span {
     color: $medium-gray;
   }
+}
+
+
+.edit-pano-item-form-wrapper input.pano-item-save-button{
+  bottom: 0;
 }
 
 /* gallery show ends */
