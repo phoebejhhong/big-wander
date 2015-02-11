@@ -236,7 +236,7 @@
 
 .aboutLogo {
   background: url(asset-path("logo-black.png")) no-repeat center;
-  width: 260px;
+  width: 560px;
   height: 100px
 }
 
@@ -257,7 +257,10 @@
   a:hover {
     color: $dark-gray;
   }
+}
 
+.about-footer {
+  font-size: 12px;
 }
 
 .menu-to-hide {
