@@ -10,7 +10,6 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.listenTo(BigWander.currentUser, 'sync', this.renderVotesCount);
     this.gallery = options.gallery;
     this.lat = Number(this.model.get("lat"));
     this.lng = Number(this.model.get("lng"));
@@ -58,7 +57,7 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
   },
 
   renderVotesCount: function () {
-    if (BigWander.currentUser.votes) {
+    if (BigWander.currentUser && BigWander.currentUser.votes) {
       if (Object.keys(BigWander.currentUser.votes).indexOf(this.model.id.toString()) !== -1) {
         this.$(".vote-pano-item").addClass("voted");
       } else {
@@ -68,7 +67,7 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
 
     var $count = this.$(".votes-count")
     if (this.votesCount) {
-      $count.html(this.votesCount + "Votes");
+      $count.html(this.votesCount + " Votes");
     } else {
       $count.html("No Vote Yet");
     };
@@ -126,8 +125,8 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
         });
       };
     } else {
-      // TODO: sign in to vote!
-    }
+      this.$('.vote-pano-item').tooltip('show');
+    };
 
   },
 

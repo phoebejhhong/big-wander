@@ -623,7 +623,7 @@ input.pano-item-save-button {
   }
 
   a:hover {
-    color: $dark-gray;
+    color: $color700;
   }
 }
 
@@ -748,8 +748,16 @@ input.pano-item-save-button {
   }
 
   a:hover {
-    color: $dark-gray;
+    color: $color700;
   }
+}
+
+.votes-count {
+  margin-left: 10px;
+  font-size: 14px;
+  display: inline-block;
+  vertical-align: middle;
+  height: 25px;
 }
 
 a.voted {
