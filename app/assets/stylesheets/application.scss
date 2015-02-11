@@ -235,9 +235,29 @@
 }
 
 .aboutLogo {
-  background: url(asset-path("logo-black.png"));
-  width: 300px;
-  height:60px;
+  background: url(asset-path("logo-black.png")) no-repeat center;
+  width: 260px;
+  height: 100px
+}
+
+.about-big {
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.about-normal {
+  margin: 0;
+  strong {
+    color: $color700;
+    font-weight: 500;
+  }
+  a {
+    color: $light-gray;
+  }
+  a:hover {
+    color: $dark-gray;
+  }
+
 }
 
 .menu-to-hide {
