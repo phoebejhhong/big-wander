@@ -18,13 +18,7 @@
           <span class="glyphicon glyphicon-trash"></span>
         </a>
       <% } else { %>
-        <span>
-          <% if (panoItem.get("votes_count")) { %>
-            <%= panoItem.get("votes_count") %> Votes
-          <% } else { %>
-            No Vote Yet
-            <% } %>
-          </span>
+        <span class="votes-count"></span>
         <a href="javascript:void(0)" class="vote-pano-item">
           <i class="fa fa-thumbs-o-up"></i>
         </a>

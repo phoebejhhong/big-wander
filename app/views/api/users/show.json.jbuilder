@@ -7,3 +7,7 @@ json.galleries @user.galleries do |gallery|
     json.extract! pano_item, :id, :title, :lat, :lng, :heading, :pitch, :created_at, :updated_at
   end
 end
+
+json.votes @user.votes do |vote|
+  json.extract! vote, :id, :pano_item_id
+end

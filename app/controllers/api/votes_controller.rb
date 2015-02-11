@@ -12,7 +12,7 @@ class Api::VotesController < ApplicationController
   def destroy
     vote = Vote.find(params[:id])
     vote.destroy
-    render nothing: true
+    render json: {success: "success", status_code: "200"}
   end
 
   private
