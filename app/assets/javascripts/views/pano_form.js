@@ -42,8 +42,13 @@ BigWander.Views.PanoForm = Backbone.CompositeView.extend({
     if (!this.model.isNew()) {
       var currentGallery = this.model.collection.gallery.id
     }
-
     var params = $(event.currentTarget).serializeJSON();
+    if (params["gallery_id"] === "choose") {
+      that.$(".choose-gallery").addClass("input-error");
+      return;
+    } else {
+      that.$(".choose-gallery").removeClass("input-error");
+    };
     this.values ? $.extend(params, this.values) : false;
     this.model.save(params, {
       success: function () {
@@ -58,14 +63,7 @@ BigWander.Views.PanoForm = Backbone.CompositeView.extend({
           that.superView.closeEditPanoForm();
         };
         var panorama = new BigWander.Models.Panorama(that.values);
-        panorama.save({}, {
-          success: function () {
-            console.log("suc");
-          },
-          error: function () {
-            console.log("err");
-          }
-        });
+        panorama.save();
       },
       error: function () {
         that.$(".title-input").addClass("input-error");

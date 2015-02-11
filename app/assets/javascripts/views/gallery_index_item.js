@@ -46,6 +46,7 @@ BigWander.Views.GalleryIndexItem = Backbone.CompositeView.extend({
 
   deleteGallery: function () {
     this.model.collection.remove(this.model);
+    BigWander.currentUser.galleries().remove(this.model);
     this.model.destroy();
   },
 

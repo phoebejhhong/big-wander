@@ -13,7 +13,7 @@ class PanoItem < ActiveRecord::Base
   end
 
   def self.popular(num)
-    PanoItem.order(votes_count: :desc).limit(num)
+    PanoItem.order(:votes_count).limit(num)
   end
 
   def all_tags
