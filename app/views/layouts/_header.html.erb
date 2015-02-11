@@ -37,7 +37,7 @@
         <%= image_tag("big-wander-logo.png") %>
       </a>
     </div>
-    <div class="col-md-2 random-button menu-to-hide">
+    <div class="col-md-2 random-button menu-to-hide header-button">
       <a href="/random" class="go-random-link">
         <!-- <span class="glyphicon glyphicon-play" aria-hidden="true"></span> -->
         <span class="explore"><i class="fa fa-map-marker"></i> EXPLORE!</span>
@@ -62,34 +62,33 @@
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
     </div>
-    <div class="col-md-5 nothing">
-    </div>
-    <div class="col-md-2 search-form-wrapper">
-      <form class="search-form">
-        <input type="text" class="search-query" placeholder="Search!">
-        <button type="submit" class="search-button">
-          <span class="glyphicon glyphicon-search"></span>
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-10"></div>
-    <% if signed_in? %>
-      <div class="col-md-1 my-gallery">
-        <a href="<%= "/users/" + current_user.id.to_s %>">My Galleries</a>
-      </div>
-      <div class="col-md-1 sign-out">
-        <%= link_to "Sign out", session_url, method: :delete %>
-      </div>
-    <% else %>
-    <div class="col-md-1 log-in">
-      <%= link_to "Log in", new_session_url %>
-    </div>
-    <div class="col-md-1 sign-up">
-      <%= link_to "Sign up", new_user_url %>
-    </div>
-    <% end %>
   </div>
 </header>
+
+<div class="col-md-2 search-form-wrapper">
+  <form class="search-form">
+    <input type="text" class="search-query" placeholder="Search!">
+    <button type="submit" class="search-button">
+      <span class="glyphicon glyphicon-search"></span>
+    </button>
+  </form>
+</div>
+
+<div class="sign-in-menu-wrapper">
+<% if signed_in? %>
+<div class="my-gallery">
+  <a href="<%= "/users/" + current_user.id.to_s %>">My Galleries</a>
+</div>
+<div class="sign-out">
+  <%= link_to "Sign out", session_url, method: :delete %>
+</div>
+<% else %>
+<div class="log-in">
+  <%= link_to "Log in", new_session_url %>
+</div>
+<div class="sign-up">
+  <%= link_to "Sign up", new_user_url %>
+</div>
+<% end %>
+
+</div>

@@ -77,7 +77,6 @@
  /* header starts */
  header {
    height: 100px;
-   width: 100%;
    z-index: 5;
    position: absolute;
    top: 0;
@@ -104,7 +103,7 @@
   width: 330px;
 }
 
-.random-button, .sign-out, .my-gallery, .sign-up, .log-in {
+.random-button {
   font-size: 18px;
   background: $color400;
   line-height: 50px;
@@ -260,6 +259,7 @@
   vertical-align: middle;
   line-height: 50px;
   color: #fff;
+  width: 42px;
 
   a {
     display: block
@@ -277,15 +277,17 @@
 }
 
 .search-form-wrapper {
+  z-index: 5;
   position: absolute;
   right: 0;
-  bottom: 20px;
+  top: 10px;
+  height: 38px;
 }
 .search-query {
   position: absolute;
   left: 0;
   width: 80%;
-  border: 3px solid $color700;
+  border: 5px solid $color700;
   height: 38px;
   padding: 5px;
 }
@@ -297,6 +299,33 @@
   height: 38px;
   color: #fff;
   background-color: $color700;
+}
+
+.sign-in-menu-wrapper {
+  z-index: 5;
+  width: 240px;
+  height: 38px;
+  position: absolute;
+  right: 0;
+  top: 60px;
+}
+
+.sign-out, .my-gallery, .sign-up, .log-in {
+  width: 120px;
+  padding: 5px;
+  font-size: 18px;
+  background: $color200;
+  line-height: 38px;
+  text-align: center;
+  vertical-align: middle;
+  float: left;
+
+  a, a:hover {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+  }
+
 }
 
  /* header ends */
