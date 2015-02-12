@@ -14,16 +14,6 @@ BigWander.Models.User = Backbone.Model.extend({
     return this._galleries;
   },
 
-  // votes: function () {
-  //   if (!this._votes) {
-  //     this._votes = new BigWander.Collections.Votes([], {
-  //       user: this
-  //     });
-  //   };
-  //
-  //   return this._votes;
-  // },
-
   parse: function (payload) {
     if (payload.galleries) {
       this.galleries().set(payload.galleries, { parse: true });
@@ -42,16 +32,4 @@ BigWander.Models.User = Backbone.Model.extend({
     return payload;
   },
 
-  // parse: function (payload) {
-  //   if (payload.galleries) {
-  //     this.galleries().set(payload.galleries, { parse: true });
-  //     delete payload.galleries;
-  //   }
-  //   if (payload.votes) {
-  //     this.votes().set(payload.votes);
-  //     delete payload.votes;
-  //   }
-  //
-  //   return payload;
-  // }
 })

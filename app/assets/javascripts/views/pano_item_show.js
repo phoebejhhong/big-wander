@@ -18,8 +18,8 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
     this.loc = new google.maps.LatLng(this.lat,this.lng);
     this.votesCount = this.model.get("votes_count");
     if (BigWander.currentUser) {
-      this.listenTo(BigWander.currentUser, 'sync', this.renderVotesCount);      
-    }
+      this.listenTo(BigWander.currentUser, 'sync', this.renderVotesCount);
+    };
   },
 
   render: function () {
@@ -122,7 +122,7 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
         vote.destroy({
           success: function () {
             delete BigWander.currentUser.votes[that.model.id];
-            that.votesCount === 1 ? that.votesCount -= 1 : that.votesCount = null;
+            that.votesCount === 1 ? that.votesCount = null : that.votesCount -= 1;
             that.renderVotesCount();
           },
         });

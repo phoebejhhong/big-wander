@@ -16,6 +16,5 @@ BigWander.Models.PanoItem = Backbone.Model.extend({
     var url = "/p/" + this.get("lat") + "/" + this.get("lng") + "/"
     url += this.get("heading") +"/" + this.get("pitch")
     return url;
-  }
-
-})
+  },
+});

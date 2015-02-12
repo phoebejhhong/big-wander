@@ -404,9 +404,39 @@
   }
 
   .root-pano-index-item {
-    margin: 10px 0 10px 15px;
+    margin: 10px 0 50px 15px;
     width: 420px;
     height: 280px;
+
+    .vote-wrapper {
+      position: relative;
+      top: -65px;
+      right: 15px;
+      float: right;
+
+      .votes-count {
+        background: $color400;
+        color: #fff;
+        border-radius: 5px;
+        vertical-align: middle;
+        line-height: 21px;
+        padding: 2px 5px;
+        font-size: 12px;
+      }
+    }
+
+    .pano-item-information {
+      position: relative;
+      top: -25px;
+      right: -50px;
+      float: right;
+      a, a.vote-pano-item:hover, a.vote-pano-item.voted {
+        color: $color400;
+      }
+      a.vote-pano-item, a.view-full-size {
+        color: $dark-gray;
+      }
+    }
   }
   .pano-index-item-title {
     width: 380px;

@@ -6,3 +6,21 @@
   </div>
   <img src="<%= panoItem.getSmallImageUrl() %>" />
 </a>
+<div class="vote-wrapper">
+  <span class="votes-count"></span>
+</div>
+
+<div class="pano-item-information">
+  <a href="<%= panoItem.getPanoramaViewUrl() %>" class="view-full-size"
+    data-toggle="tooltip" data-placement="left" title="View full size">
+    <span class="glyphicon glyphicon-picture"></span>
+  </a>
+  in <a href="<%= '/galleries/' + gallery["id"]  %>"><%= gallery["title"] %></a>
+  by <a href="<%= '/users/' + owner["id"]  %>"><%= owner["username"] %></a>
+  <% if (BigWander.currentUserId !== owner["id"]) { %>
+    <a href="javascript:void(0)" class="vote-pano-item"
+    data-toggle="tooltip" data-placement="bottom" title="Like this? Sign in to vote!">
+    <i class="fa fa-thumbs-o-up"></i>
+  </a>
+  <% }%>
+</div>
