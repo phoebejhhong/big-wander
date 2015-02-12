@@ -39,9 +39,14 @@
    -webkit-box-sizing:border-box;
  }
 
+ *, *:before, *:after {
+   box-sizing: inherit;
+ }
+
  html, body {
    height: 100%;
    background: $color50;
+   box-sizing: border-box;
  }
 
  input:focus, button:focus {
@@ -408,45 +413,49 @@
     width: 420px;
     height: 280px;
 
-    .vote-wrapper {
-      position: relative;
-      top: -65px;
-      right: 15px;
-      float: right;
+    .image-wrapper {
+      height: 280px;
+    }
 
-      .votes-count {
-        background: $color400;
-        color: #fff;
-        border-radius: 5px;
-        vertical-align: middle;
-        line-height: 21px;
-        padding: 2px 5px;
-        font-size: 12px;
-      }
+    .votes-count {
+      background: $color400;
+      color: #fff;
+      border-radius: 5px;
+      vertical-align: middle;
+      line-height: 21px;
+      padding: 2px 5px;
+      font-size: 12px;
+      position: relative;
+      top: -40px;
+      right: 10px;
+      float: right;
     }
 
     .pano-item-information {
       position: relative;
-      top: -25px;
-      right: -50px;
+      top: 10px;
+      right: -60px;
       float: right;
+      a:hover {
+        text-decoration: none;
+      }
       a, a.vote-pano-item:hover, a.vote-pano-item.voted {
         color: $color400;
       }
       a.vote-pano-item, a.view-full-size {
-        color: $dark-gray;
+        color: $dark-gray
       }
     }
   }
   .pano-index-item-title {
     width: 380px;
-    top: 15px;
+    top: -270px;
     font-size: 24px;
+    display: inline;
   }
 
   img {
     position: relative;
-    top: -33px;
     -webkit-transition:all 0.2s ease-in-out;
     -moz-transition:all 0.2s ease-in-out;
     -o-transition:all 0.2s ease-in-out;
@@ -457,7 +466,6 @@
     opacity: 0.6;
   }
 
-  // TODO: i want a different effect!!!!!!
   .selected {
     filter: brightness(70%);
     -webkit-filter: brightness(70%);
@@ -715,14 +723,21 @@ input.pano-item-save-button {
   margin: 0;
 }
 
+.pano-index-item {
+  height: 300px;
+  margin-top: 30px;
+}
+
 .pano-index-item-title {
   color: #fff;
   font-size: 28px;
   position: relative;
-  top: 70px;
+  top: -280px;
   left: 25px;
   z-index: 5;
+  width: 520px;
   text-shadow: 1px 1px 3px #424242;
+  word-wrap: break-word;
 }
 
 .view-all-wrapper {
