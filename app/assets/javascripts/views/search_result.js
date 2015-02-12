@@ -30,6 +30,9 @@ BigWander.Views.SearchResult = Backbone.CompositeView.extend({
     })
 
     this.addSubview(".galleries-search-result", view);
+    _(view.subviews('.pano-items-index')).each(function (subview) {
+      google.maps.event.trigger(subview.panorama, 'resize');
+    });
   },
 
   removeGallery: function (gallery) {
