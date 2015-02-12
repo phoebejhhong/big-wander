@@ -27,7 +27,7 @@ BigWander.Views.UserShow = Backbone.CompositeView.extend({
       });
     });
 
-      return this;
+    return this;
   },
 
   addGallery: function (gallery) {
@@ -56,7 +56,7 @@ BigWander.Views.UserShow = Backbone.CompositeView.extend({
       model: new BigWander.Models.Gallery(),
       collection: this.collection,
     });
-    this.$(".gallery-form-modal").html(view.render().$el);
+    this.$("#new-gallery-modal").html(view.render().$el);
 
     this.$("#new-gallery-modal").modal();
   },

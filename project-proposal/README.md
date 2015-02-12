@@ -1,12 +1,12 @@
 # BigWander
 
-[http://bigwander.herokuapp.com][heroku]
+[http://bigwander.phoebehong.com][heroku]
 
 ## Minimum Viable Product
 [MapCrunch][mapcrunch] lets users explore the world by presenting random Google street views (panoramas). [BigWander][heroku] is a MapCrunch clone with personal features added. Users can save their favorite panoramas to their galleries.
 
 [mapcrunch]: http://www.mapcrunch.com/
-[heroku]: http://bigwander.herokuapp.com
+[heroku]: http://bigwander.phoebehong.com
 
 All users can:
 - [x] View random/selected street views (panoramas)
@@ -52,9 +52,9 @@ I'll need a `search` route that accepts a query in the params. The controller ac
 [Details][phase-four]
 
 ### Bonus Features (TBD)
-- [ ] Lading page
+- [x] Lading page
 - [ ] Share buttons
-- [ ] Vote button and counter for `PanoItemShow` view
+- [x] Vote button and counter for `PanoItemShow` view
 - [ ] TagShow view
 - [ ] Pagination of the `UserShow`, `GalleryShow`, and `SearchShow` views
 - [ ] Subscribe to lists

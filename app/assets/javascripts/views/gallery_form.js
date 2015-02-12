@@ -9,7 +9,6 @@ BigWander.Views.GalleryForm = Backbone.CompositeView.extend({
 
   events: {
     "submit": "saveGallery",
-    "click .close-gallery-form": "closeForm",
   },
 
   render: function () {
@@ -43,9 +42,4 @@ BigWander.Views.GalleryForm = Backbone.CompositeView.extend({
       }
     });
   },
-
-  closeForm: function () {
-    this.remove();
-  },
-
 })
