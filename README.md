@@ -1,4 +1,4 @@
-== BigWander
+# BigWander
 
 Explore the world and share your favorite destination!
 
