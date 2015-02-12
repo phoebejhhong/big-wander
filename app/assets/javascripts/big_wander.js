@@ -40,7 +40,9 @@ BigWander.slideMenu = function () {
       $(".menu-to-hide").removeClass("hidden-menu");
       var arrows = $(".glyphicon-chevron-right").removeClass("glyphicon-chevron-right");
       arrows.addClass("glyphicon-chevron-left");
-      google.maps.event.trigger(BigWander.map, 'resize');
+      setTimeout(function(){
+        google.maps.event.trigger(BigWander.map, 'resize');
+      }, 1000);
     } else {
       BigWander.menuClose = true;
       $(".menu-to-hide").addClass("hidden-menu").html;

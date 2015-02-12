@@ -30,6 +30,11 @@ BigWander.Views.GalleryShow = Backbone.CompositeView.extend({
     });
 
     this.addSubview(".pano-items-index", view);
+
+    // dynamic height size for each panorama
+    var width = this.$(".large-panorama").width();
+    this.$(".large-panorama").css({'height': width * 0.5 + 'px'});
+
     google.maps.event.trigger(view.panorama, 'resize')
   },
 
