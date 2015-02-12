@@ -17,6 +17,9 @@ BigWander.Views.PanoItemShow = Backbone.CompositeView.extend({
     this.pitch = Number(this.model.get("pitch"));
     this.loc = new google.maps.LatLng(this.lat,this.lng);
     this.votesCount = this.model.get("votes_count");
+    if (BigWander.currentUser) {
+      this.listenTo(BigWander.currentUser, 'sync', this.renderVotesCount);      
+    }
   },
 
   render: function () {

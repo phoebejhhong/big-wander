@@ -21,8 +21,13 @@ BigWander.Views.UserShow = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.$('.new-gallery').tooltip();
     this.renderGalleries();
+    _(this.subviews('.galleries-index')).each(function (galleryView) {
+      _(galleryView.subviews('.pano-items-index')).each(function (view) {
+        google.maps.event.trigger(view.panorama, 'resize');
+      });
+    });
 
-    return this;
+      return this;
   },
 
   addGallery: function (gallery) {
