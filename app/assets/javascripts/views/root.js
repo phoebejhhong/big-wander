@@ -6,11 +6,13 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
     "click .root-pano-item-anchor": "getNewValues",
     "click .show-form": "renderSavePanoForm",
     "click .close-form": "closeSavePanoForm",
-},
+  },
 
   initialize: function (options) {
+    this.pageNum = 1;
     this.collection = new BigWander.Collections.PopularPanoItems([], {
       num: 5,
+      pageNum: this.pageNum,
     });
   },
 
@@ -19,6 +21,7 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
 
     var content = this.template();
     this.$el.html(content);
+    this.listView = new infinity.ListView($(".root-gallery"));
     this.collection.fetch({
       success: function () {
         that.selectedItem = that.collection.first();
@@ -40,6 +43,28 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
     });
 
     this.addSubview(".root-pano-items-index", view);
+  },
+
+  checkScroll: function (event) {
+    var $galleryDiv = $(event.currentTarget);
+    var galleryDiv = event.currentTarget;
+    if ($galleryDiv.scrollTop() + $galleryDiv.height() > galleryDiv.scrollHeight) {
+      this.loadMore();
+    }
+  },
+
+  loadMore: function () {
+    var that = this;
+    this.pageNum += 1;
+    var new_collection = new BigWander.Collections.PopularPanoItems([], {
+      num: 5,
+      pageNum: this.pageNum,
+    });
+    new_collection.fetch({
+      success: function () {
+        new_collection.each(that.addPanoItem.bind(that));
+      },
+    });
   },
 
   setValues: function (panoItem) {

@@ -19,6 +19,7 @@ BigWander.Routers.Router = Backbone.Router.extend({
     var view = new BigWander.Views.Root();
 
     this._swapView(view);
+    view.$(".root-gallery").scroll(view.checkScroll.bind(view));
   },
 
   randomPanorama: function () {

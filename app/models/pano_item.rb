@@ -12,8 +12,8 @@ class PanoItem < ActiveRecord::Base
     PanoItem.includes(:taggings).where(taggings: {tag_id: tags})
   end
 
-  def self.popular(num)
-    PanoItem.order("votes_count DESC NULLS LAST").limit(num)
+  def self.popular(num, page_num)
+    PanoItem.order("votes_count DESC NULLS LAST").page(page_num).per(num)
   end
 
   def all_tags

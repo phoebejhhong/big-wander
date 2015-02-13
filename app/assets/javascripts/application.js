@@ -16,6 +16,7 @@
 //= require backbone
 //= require big_wander
 //= require jquery.serializeJSON
+//= require infinity.min
 //= require bootstrap-sprockets
 //= require_tree ../templates
 //= require_tree ./utils
