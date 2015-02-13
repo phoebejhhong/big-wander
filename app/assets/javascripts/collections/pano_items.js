@@ -4,6 +4,12 @@ BigWander.Collections.PanoItems = Backbone.Collection.extend({
 
   initialize: function (models, options) {
     this.gallery = options.gallery;
+
+    if (options.num) {
+      // if paginated
+      this.num = options.num.toString();
+      this.pageNum = options.pageNum.toString();
+    }
   },
 
   getOrFetch: function (id) {
@@ -22,5 +28,16 @@ BigWander.Collections.PanoItems = Backbone.Collection.extend({
     }
 
     return panoItem;
-  }
+  },
+
+  parse: function(payload) {
+    if (payload.page) {
+      // if paginated
+      this.page = payload.page;
+      this.totalPages = payload.total_pages;
+      return payload.pano_items;
+    } else {
+      return payload;
+    }
+  },
 });
