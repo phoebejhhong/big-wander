@@ -2,9 +2,9 @@ class Api::PanoItemsController < ApplicationController
 
   def index
     if params[:query]
-      @pano_items = PanoItem.search(params[:query])
+      @pano_items = PanoItem.popular.search(params[:query])
     elsif params[:popular]
-      @pano_items = PanoItem.popular(params[:popular], params[:page])
+      @pano_items = PanoItem.popular.page(params[:page]).per(params[:popular])
     else
       @pano_items = PanoItem.all
     end

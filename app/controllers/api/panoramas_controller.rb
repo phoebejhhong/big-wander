@@ -18,7 +18,7 @@ class Api::PanoramasController < ApplicationController
     if panorama.save()
       render json: panorama
     else
-      render json: panorama.errors.full_messages
+      render nothing: true
     end
   end
 
