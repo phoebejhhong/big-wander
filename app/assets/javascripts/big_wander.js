@@ -41,8 +41,10 @@ BigWander.slideMenu = function () {
       var arrows = $(".glyphicon-chevron-right").removeClass("glyphicon-chevron-right");
       arrows.addClass("glyphicon-chevron-left");
       setTimeout(function(){
+        var currCenter = BigWander.map.getCenter();
         google.maps.event.trigger(BigWander.map, 'resize');
-      }, 1000);
+        BigWander.map.setCenter(currCenter);
+      }, 500);
     } else {
       BigWander.menuClose = true;
       $(".menu-to-hide").addClass("hidden-menu").html;
