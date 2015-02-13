@@ -6,6 +6,7 @@ BigWander.Routers.Router = Backbone.Router.extend({
     "p/:lat/:lgn": "streetViewPanoramaShow",
     "users/new": "",
     "users/:id": "userShow",
+    "galleries/featured": "featuredGalleries",
     "galleries/:id": "galleryShow",
     "search/:query": "searchQuery",
   },
@@ -61,6 +62,23 @@ BigWander.Routers.Router = Backbone.Router.extend({
     user.fetch();
     var view = new BigWander.Views.UserShow({
       model: user
+    });
+
+    this._swapView(view);
+  },
+
+  featuredGalleries: function () {
+    var featuredGalleriesIds = [7, 5, 10, 4];
+    var models = [];
+    _(featuredGalleriesIds).each(function (id) {
+      var model = new BigWander.Models.Gallery({
+        id: id
+      });
+      models.push(model);
+      model.fetch();
+    });
+    var view = new BigWander.Views.FeaturedGalleries({
+      collection: new BigWander.Collections.Galleries(models, {}),
     });
 
     this._swapView(view);

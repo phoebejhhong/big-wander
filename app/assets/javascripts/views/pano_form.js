@@ -43,7 +43,7 @@ BigWander.Views.PanoForm = Backbone.CompositeView.extend({
       var currentGallery = this.model.collection.gallery.id
     }
     var params = $(event.currentTarget).serializeJSON();
-    if (params["gallery_id"] === "choose") {
+    if (params["gallery_id"] === "choose" || "new") {
       that.$(".choose-gallery").addClass("input-error");
       return;
     } else {
