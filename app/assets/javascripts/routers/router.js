@@ -68,7 +68,7 @@ BigWander.Routers.Router = Backbone.Router.extend({
   },
 
   featuredGalleries: function () {
-    var featuredGalleriesIds = [7, 9, 10, 4];
+    var featuredGalleriesIds = [7, 17, 10, 4, 16, 18];
     var models = [];
     _(featuredGalleriesIds).each(function (id) {
       var model = new BigWander.Models.Gallery({
