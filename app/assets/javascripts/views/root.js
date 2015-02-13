@@ -26,6 +26,7 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
       success: function () {
         that.selectedItem = that.collection.first();
         that.renderPanoItems();
+        that.totalPages = that.collection.totalPages;
       },
     });
 
@@ -50,6 +51,7 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
     var $galleryDiv = $(event.currentTarget);
     var galleryDiv = event.currentTarget;
     if ($galleryDiv.scrollTop() + $galleryDiv.height() > galleryDiv.scrollHeight) {
+      if (this.totalPages > this.pageNum)
       this.loadMore();
     }
   },

@@ -10,4 +10,10 @@ BigWander.Collections.PopularPanoItems = Backbone.Collection.extend({
     this.num = options.num.toString();
     this.pageNum = options.pageNum.toString();
   },
+
+  parse: function(payload) {
+    this.page = payload.page;
+    this.totalPages = payload.total_pages;
+    return payload.pano_items;
+  },
 });

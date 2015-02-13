@@ -3,12 +3,14 @@ class Api::PanoItemsController < ApplicationController
   def index
     if params[:query]
       @pano_items = PanoItem.popular.search(params[:query])
+      render :index
     elsif params[:popular]
       @pano_items = PanoItem.popular.page(params[:page]).per(params[:popular])
+      render :paginated_index
     else
       @pano_items = PanoItem.all
+      render :index
     end
-    render :index
   end
 
   def create
