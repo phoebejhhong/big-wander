@@ -43,6 +43,7 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
     });
 
     this.addSubview(".root-pano-items-index", view);
+    google.maps.event.trigger(view.panorama, 'resize')
   },
 
   checkScroll: function (event) {

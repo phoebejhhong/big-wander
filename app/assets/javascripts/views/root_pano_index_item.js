@@ -7,6 +7,12 @@ BigWander.Views.RootPanoIndexItem = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
+    this.lat = Number(this.model.get("lat"));
+    this.lng = Number(this.model.get("lng"));
+    this.heading = Number(this.model.get("heading"));
+    this.pitch = Number(this.model.get("pitch"));
+    this.loc = new google.maps.LatLng(this.lat,this.lng);
+
     this.votesCount = this.model.get("votes_count");
     this.gallery = this.model.get("gallery");
     this.owner = this.model.get("gallery")["owner"];
@@ -22,10 +28,31 @@ BigWander.Views.RootPanoIndexItem = Backbone.CompositeView.extend({
       owner: this.owner,
     });
     this.$el.html(content);
+    this.renderStreetView();
     this.$('.view-full-size').tooltip();
     this.renderVotesCount();
 
     return this;
+  },
+
+  renderStreetView: function () {
+    var panoramaOptions = {
+      position: this.loc,
+      pov: {
+        heading: this.heading,
+        pitch: this.pitch,
+      },
+      visible: true,
+      clickToGo: false,
+      addressControl: false,
+      scrollwheel: false,
+      zoomControl: false,
+      panControl: false,
+      linksControl: false,
+    };
+    this.panorama = new google.maps.StreetViewPanorama(
+      this.$(".small-panorama")[0], panoramaOptions
+    );
   },
 
   renderVotesCount: function () {

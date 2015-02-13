@@ -454,18 +454,6 @@
     display: inline;
   }
 
-  img {
-    position: relative;
-    -webkit-transition:all 0.2s ease-in-out;
-    -moz-transition:all 0.2s ease-in-out;
-    -o-transition:all 0.2s ease-in-out;
-    transition:all 0.2s ease-in-out;
-  }
-
-  img:hover {
-    opacity: 0.6;
-  }
-
   .selected {
     filter: brightness(70%);
     -webkit-filter: brightness(70%);
@@ -477,6 +465,20 @@
 
 .root-gallery:hover, .root-gallery:focus {
   overflow: auto;
+}
+
+.small-panorama {
+  width: 420px;
+  height: 280px;
+  position: relative;
+  -webkit-transition:all 0.2s ease-in-out;
+  -moz-transition:all 0.2s ease-in-out;
+  -o-transition:all 0.2s ease-in-out;
+  transition:all 0.2s ease-in-out;
+}
+
+.small-panorama:hover {
+  opacity: 0.6;
 }
 
  /* root page */
