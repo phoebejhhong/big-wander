@@ -18,9 +18,8 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
 
     var content = this.template();
     this.$el.html(content);
-    this.listView = new infinity.ListView($(".root-gallery"));
     this.collection.fetch({
-      data: { popular: 5, page: this.pageNum },
+      data: { per: 5, page: this.pageNum, popular: true },
       success: function () {
         that.selectedItem = that.collection.first();
         that.renderPanoItems();
@@ -58,7 +57,7 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
     var that = this;
     this.pageNum += 1;
     this.collection.fetch({
-      data: { popular: 5, page: this.pageNum },
+      data: { per: 5, page: this.pageNum, popular: true },
       success: function () {
         that.collection.each(that.addPanoItem.bind(that));
       },

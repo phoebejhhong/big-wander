@@ -3,6 +3,8 @@ BigWander.Views.GalleryShow = Backbone.CompositeView.extend({
   className: "gallery-show",
 
   initialize: function (options) {
+    this.pageNum = 1;
+    
     this.collection = this.model.panoItems();
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.collection, 'add', this.addPanoItem);
