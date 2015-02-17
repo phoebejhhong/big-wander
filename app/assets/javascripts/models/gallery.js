@@ -8,7 +8,7 @@ BigWander.Models.Gallery = Backbone.Model.extend({
     if (!this._panoItems) {
       this._panoItems = new BigWander.Collections.PanoItems([], {
         gallery: this
-      });;
+      });
     };
 
     return this._panoItems;
@@ -18,7 +18,7 @@ BigWander.Models.Gallery = Backbone.Model.extend({
     if (payload.pano_items) {
       this.panoItems().set(payload.pano_items);
       delete payload.pano_items;
-    }
+    };
 
     return payload;
   }
