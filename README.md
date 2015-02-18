@@ -1,6 +1,7 @@
 # BigWander
 
-Explore the world and share your favorite destination!
+* Explore the world and share your favorite destination!
+* BigWander is a Backbone + Rails app that transport you to ramdom Google Street Views.
 
-[http://bigwander.phoebehong.com][heroku]
-[heroku]: http://bigwander.phoebehong.com
+Live: [http://bigwander.com][big-wander]
+[big-wander]: http://bigwander.com
