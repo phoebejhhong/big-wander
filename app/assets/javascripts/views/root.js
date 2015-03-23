@@ -61,7 +61,7 @@ BigWander.Views.Root = Backbone.CompositeView.extend({
   },
 
   getNewValues: function (event) {
-    // $(event.currentTarget).find("img").addClass("selected");
+    event.preventDefault();
     var panoId = $(event.currentTarget).data("id");
     this.selectedItem = this.collection.get(panoId);
     this.setValues(this.selectedItem);
