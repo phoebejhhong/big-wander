@@ -84,8 +84,8 @@ BigWander.Views.StreetViewPanoramaShow = Backbone.CompositeView.extend({
 
   // reflecting user's interaction with street view
   getCurrentValues: function () {
-    var lat = this.panorama.getPosition().k;
-    var lng = this.panorama.getPosition().D;
+    var lat = this.panorama.getPosition().lat();
+    var lng = this.panorama.getPosition().lng();
     var heading = this.panorama.getPov().heading;
     var pitch = this.panorama.getPov().pitch;
 
